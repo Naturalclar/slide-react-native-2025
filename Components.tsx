@@ -230,4 +230,53 @@ export const Components = {
       </div>
     );
   },
+  Box: ({
+    children,
+    size = 220,
+    backgroundColor = "black",
+    color = "white",
+  }: {
+    children: React.ReactNode;
+    size?: string | number;
+    backgroundColor?: string;
+    color?: string;
+  }) => (
+    <div
+      style={{
+        alignItems: "center",
+        backgroundColor,
+        border: "2px solid var(--text-color)",
+        borderRadius: 8,
+        color,
+        display: "flex",
+        fontSize: "1rem",
+        height: size,
+        justifyContent: "center",
+        padding: "12px 24px",
+        width: size,
+      }}
+    >
+      {children}
+    </div>
+  ),
+  Arrow: ({ direction = "right" }: { direction?: "right" | "left" | "down" | "up" }) => {
+    const symbols = {
+      right: "→",
+      left: "←",
+      down: "↓",
+      up: "↑",
+    };
+
+    return (
+      <div
+        style={{
+          color: "var(--text-color)",
+          fontSize: "2rem",
+          margin: "0 16px",
+        }}
+      >
+        {symbols[direction]}
+      </div>
+    );
+  },
 };
