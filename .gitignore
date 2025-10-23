@@ -1,0 +1,6 @@
+node_modules
+.vercel
+*:Zone.Identifier
+dist
+.DS_Store
+

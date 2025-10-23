@@ -1,0 +1,4206 @@
+diff --git a/index.js b/index.js
+index c98131e3b682c299fbfa5dd5234aa718c8e0bf73..fdb0ddfe6daba9a7d33a8b906183ef2eb10fbe81 100644
+--- a/index.js
++++ b/index.js
+@@ -4,30 +4,46 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+ var __getOwnPropNames = Object.getOwnPropertyNames;
+ var __getProtoOf = Object.getPrototypeOf;
+ var __hasOwnProp = Object.prototype.hasOwnProperty;
+-var __commonJS = (cb, mod) => function __require() {
+-  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+-};
++var __commonJS = (cb, mod) =>
++  function __require() {
++    return (
++      mod ||
++        (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod),
++      mod.exports
++    );
++  };
+ var __copyProps = (to2, from, except, desc) => {
+-  if (from && typeof from === "object" || typeof from === "function") {
++  if ((from && typeof from === "object") || typeof from === "function") {
+     for (let key of __getOwnPropNames(from))
+       if (!__hasOwnProp.call(to2, key) && key !== except)
+-        __defProp(to2, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
++        __defProp(to2, key, {
++          get: () => from[key],
++          enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable,
++        });
+   }
+   return to2;
+ };
+-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+-  // If the importer is in node compatibility mode or this is not an ESM
+-  // file that has been converted to a CommonJS file using a Babel-
+-  // compatible transform (i.e. "__esModule" has not been set), then set
+-  // "default" to the CommonJS "module.exports" for node compatibility.
+-  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+-  mod
+-));
++var __toESM = (mod, isNodeMode, target) => (
++  (target = mod != null ? __create(__getProtoOf(mod)) : {}),
++  __copyProps(
++    // If the importer is in node compatibility mode or this is not an ESM
++    // file that has been converted to a CommonJS file using a Babel-
++    // compatible transform (i.e. "__esModule" has not been set), then set
++    // "default" to the CommonJS "module.exports" for node compatibility.
++    isNodeMode || !mod || !mod.__esModule
++      ? __defProp(target, "default", { value: mod, enumerable: true })
++      : target,
++    mod,
++  )
++);
+ 
+ // ../../node_modules/.pnpm/mousetrap@1.6.5/node_modules/mousetrap/mousetrap.js
+ var require_mousetrap = __commonJS({
+-  "../../node_modules/.pnpm/mousetrap@1.6.5/node_modules/mousetrap/mousetrap.js"(exports, module) {
+-    (function(window2, document2, undefined2) {
++  "../../node_modules/.pnpm/mousetrap@1.6.5/node_modules/mousetrap/mousetrap.js"(
++    exports,
++    module,
++  ) {
++    (function (window2, document2, undefined2) {
+       if (!window2) {
+         return;
+       }
+@@ -53,7 +69,7 @@ var require_mousetrap = __commonJS({
+         46: "del",
+         91: "meta",
+         93: "meta",
+-        224: "meta"
++        224: "meta",
+       };
+       var _KEYCODE_MAP = {
+         106: "*",
+@@ -71,36 +87,36 @@ var require_mousetrap = __commonJS({
+         219: "[",
+         220: "\\",
+         221: "]",
+-        222: "'"
++        222: "'",
+       };
+       var _SHIFT_MAP = {
+         "~": "`",
+         "!": "1",
+         "@": "2",
+         "#": "3",
+-        "$": "4",
++        $: "4",
+         "%": "5",
+         "^": "6",
+         "&": "7",
+         "*": "8",
+         "(": "9",
+         ")": "0",
+-        "_": "-",
++        _: "-",
+         "+": "=",
+         ":": ";",
+         '"': "'",
+         "<": ",",
+         ">": ".",
+         "?": "/",
+-        "|": "\\"
++        "|": "\\",
+       };
+       var _SPECIAL_ALIASES = {
+-        "option": "alt",
+-        "command": "meta",
+-        "return": "enter",
+-        "escape": "esc",
+-        "plus": "+",
+-        "mod": /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? "meta" : "ctrl"
++        option: "alt",
++        command: "meta",
++        return: "enter",
++        escape: "esc",
++        plus: "+",
++        mod: /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? "meta" : "ctrl",
+       };
+       var _REVERSE_MAP;
+       for (var i = 1; i < 20; ++i) {
+@@ -221,7 +237,7 @@ var require_mousetrap = __commonJS({
+         return {
+           key,
+           modifiers,
+-          action
++          action,
+         };
+       }
+       function _belongsTo(element, ancestor) {
+@@ -249,7 +265,8 @@ var require_mousetrap = __commonJS({
+         var _nextExpectedAction = false;
+         function _resetSequences(doNotReset) {
+           doNotReset = doNotReset || {};
+-          var activeSequences = false, key;
++          var activeSequences = false,
++            key;
+           for (key in _sequenceLevels) {
+             if (doNotReset[key]) {
+               activeSequences = true;
+@@ -261,7 +278,14 @@ var require_mousetrap = __commonJS({
+             _nextExpectedAction = false;
+           }
+         }
+-        function _getMatches(character, modifiers, e, sequenceName, combination, level) {
++        function _getMatches(
++          character,
++          modifiers,
++          e,
++          sequenceName,
++          combination,
++          level,
++        ) {
+           var i2;
+           var callback;
+           var matches = [];
+@@ -274,15 +298,25 @@ var require_mousetrap = __commonJS({
+           }
+           for (i2 = 0; i2 < self._callbacks[character].length; ++i2) {
+             callback = self._callbacks[character][i2];
+-            if (!sequenceName && callback.seq && _sequenceLevels[callback.seq] != callback.level) {
++            if (
++              !sequenceName &&
++              callback.seq &&
++              _sequenceLevels[callback.seq] != callback.level
++            ) {
+               continue;
+             }
+             if (action != callback.action) {
+               continue;
+             }
+-            if (action == "keypress" && !e.metaKey && !e.ctrlKey || _modifiersMatch(modifiers, callback.modifiers)) {
++            if (
++              (action == "keypress" && !e.metaKey && !e.ctrlKey) ||
++              _modifiersMatch(modifiers, callback.modifiers)
++            ) {
+               var deleteCombo = !sequenceName && callback.combo == combination;
+-              var deleteSequence = sequenceName && callback.seq == sequenceName && callback.level == level;
++              var deleteSequence =
++                sequenceName &&
++                callback.seq == sequenceName &&
++                callback.level == level;
+               if (deleteCombo || deleteSequence) {
+                 self._callbacks[character].splice(i2, 1);
+               }
+@@ -300,7 +334,7 @@ var require_mousetrap = __commonJS({
+             _stopPropagation(e);
+           }
+         }
+-        self._handleKey = function(character, modifiers, e) {
++        self._handleKey = function (character, modifiers, e) {
+           var callbacks = _getMatches(character, modifiers, e);
+           var i2;
+           var doNotReset = {};
+@@ -318,7 +352,12 @@ var require_mousetrap = __commonJS({
+               }
+               processedSequenceCallback = true;
+               doNotReset[callbacks[i2].seq] = 1;
+-              _fireCallback(callbacks[i2].callback, e, callbacks[i2].combo, callbacks[i2].seq);
++              _fireCallback(
++                callbacks[i2].callback,
++                e,
++                callbacks[i2].combo,
++                callbacks[i2].seq,
++              );
+               continue;
+             }
+             if (!processedSequenceCallback) {
+@@ -326,10 +365,15 @@ var require_mousetrap = __commonJS({
+             }
+           }
+           var ignoreThisKeypress = e.type == "keypress" && _ignoreNextKeypress;
+-          if (e.type == _nextExpectedAction && !_isModifier(character) && !ignoreThisKeypress) {
++          if (
++            e.type == _nextExpectedAction &&
++            !_isModifier(character) &&
++            !ignoreThisKeypress
++          ) {
+             _resetSequences(doNotReset);
+           }
+-          _ignoreNextKeypress = processedSequenceCallback && e.type == "keydown";
++          _ignoreNextKeypress =
++            processedSequenceCallback && e.type == "keydown";
+         };
+         function _handleKeyEvent(e) {
+           if (typeof e.which !== "number") {
+@@ -352,7 +396,7 @@ var require_mousetrap = __commonJS({
+         function _bindSequence(combo, keys, callback, action) {
+           _sequenceLevels[combo] = 0;
+           function _increaseSequence(nextAction) {
+-            return function() {
++            return function () {
+               _nextExpectedAction = nextAction;
+               ++_sequenceLevels[combo];
+               _resetSequenceTimer();
+@@ -367,11 +411,19 @@ var require_mousetrap = __commonJS({
+           }
+           for (var i2 = 0; i2 < keys.length; ++i2) {
+             var isFinal = i2 + 1 === keys.length;
+-            var wrappedCallback = isFinal ? _callbackAndReset : _increaseSequence(action || _getKeyInfo(keys[i2 + 1]).action);
++            var wrappedCallback = isFinal
++              ? _callbackAndReset
++              : _increaseSequence(action || _getKeyInfo(keys[i2 + 1]).action);
+             _bindSingle(keys[i2], wrappedCallback, action, combo, i2);
+           }
+         }
+-        function _bindSingle(combination, callback, action, sequenceName, level) {
++        function _bindSingle(
++          combination,
++          callback,
++          action,
++          sequenceName,
++          level,
++        ) {
+           self._directMap[combination + ":" + action] = callback;
+           combination = combination.replace(/\s+/g, " ");
+           var sequence = combination.split(" ");
+@@ -382,17 +434,24 @@ var require_mousetrap = __commonJS({
+           }
+           info = _getKeyInfo(combination, action);
+           self._callbacks[info.key] = self._callbacks[info.key] || [];
+-          _getMatches(info.key, info.modifiers, { type: info.action }, sequenceName, combination, level);
++          _getMatches(
++            info.key,
++            info.modifiers,
++            { type: info.action },
++            sequenceName,
++            combination,
++            level,
++          );
+           self._callbacks[info.key][sequenceName ? "unshift" : "push"]({
+             callback,
+             modifiers: info.modifiers,
+             action: info.action,
+             seq: sequenceName,
+             level,
+-            combo: combination
++            combo: combination,
+           });
+         }
+-        self._bindMultiple = function(combinations, callback, action) {
++        self._bindMultiple = function (combinations, callback, action) {
+           for (var i2 = 0; i2 < combinations.length; ++i2) {
+             _bindSingle(combinations[i2], callback, action);
+           }
+@@ -401,31 +460,30 @@ var require_mousetrap = __commonJS({
+         _addEvent(targetElement, "keydown", _handleKeyEvent);
+         _addEvent(targetElement, "keyup", _handleKeyEvent);
+       }
+-      Mousetrap2.prototype.bind = function(keys, callback, action) {
++      Mousetrap2.prototype.bind = function (keys, callback, action) {
+         var self = this;
+         keys = keys instanceof Array ? keys : [keys];
+         self._bindMultiple.call(self, keys, callback, action);
+         return self;
+       };
+-      Mousetrap2.prototype.unbind = function(keys, action) {
++      Mousetrap2.prototype.unbind = function (keys, action) {
+         var self = this;
+-        return self.bind.call(self, keys, function() {
+-        }, action);
++        return self.bind.call(self, keys, function () {}, action);
+       };
+-      Mousetrap2.prototype.trigger = function(keys, action) {
++      Mousetrap2.prototype.trigger = function (keys, action) {
+         var self = this;
+         if (self._directMap[keys + ":" + action]) {
+           self._directMap[keys + ":" + action]({}, keys);
+         }
+         return self;
+       };
+-      Mousetrap2.prototype.reset = function() {
++      Mousetrap2.prototype.reset = function () {
+         var self = this;
+         self._callbacks = {};
+         self._directMap = {};
+         return self;
+       };
+-      Mousetrap2.prototype.stopCallback = function(e, element) {
++      Mousetrap2.prototype.stopCallback = function (e, element) {
+         var self = this;
+         if ((" " + element.className + " ").indexOf(" mousetrap ") > -1) {
+           return false;
+@@ -439,13 +497,18 @@ var require_mousetrap = __commonJS({
+             element = initialEventTarget;
+           }
+         }
+-        return element.tagName == "INPUT" || element.tagName == "SELECT" || element.tagName == "TEXTAREA" || element.isContentEditable;
++        return (
++          element.tagName == "INPUT" ||
++          element.tagName == "SELECT" ||
++          element.tagName == "TEXTAREA" ||
++          element.isContentEditable
++        );
+       };
+-      Mousetrap2.prototype.handleKey = function() {
++      Mousetrap2.prototype.handleKey = function () {
+         var self = this;
+         return self._handleKey.apply(self, arguments);
+       };
+-      Mousetrap2.addKeycodes = function(object) {
++      Mousetrap2.addKeycodes = function (object) {
+         for (var key in object) {
+           if (object.hasOwnProperty(key)) {
+             _MAP[key] = object[key];
+@@ -453,15 +516,18 @@ var require_mousetrap = __commonJS({
+         }
+         _REVERSE_MAP = null;
+       };
+-      Mousetrap2.init = function() {
++      Mousetrap2.init = function () {
+         var documentMousetrap = Mousetrap2(document2);
+         for (var method in documentMousetrap) {
+           if (method.charAt(0) !== "_") {
+-            Mousetrap2[method] = function(method2) {
+-              return function() {
+-                return documentMousetrap[method2].apply(documentMousetrap, arguments);
++            Mousetrap2[method] = (function (method2) {
++              return function () {
++                return documentMousetrap[method2].apply(
++                  documentMousetrap,
++                  arguments,
++                );
+               };
+-            }(method);
++            })(method);
+           }
+         }
+       };
+@@ -471,23 +537,31 @@ var require_mousetrap = __commonJS({
+         module.exports = Mousetrap2;
+       }
+       if (typeof define === "function" && define.amd) {
+-        define(function() {
++        define(function () {
+           return Mousetrap2;
+         });
+       }
+-    })(typeof window !== "undefined" ? window : null, typeof window !== "undefined" ? document : null);
+-  }
++    })(
++      typeof window !== "undefined" ? window : null,
++      typeof window !== "undefined" ? document : null,
++    );
++  },
+ });
+ 
+ // src/deck.tsx
+ import {
+   createContext,
+   useCallback as useCallback4,
+-  useEffect as useEffect4
++  useEffect as useEffect4,
+ } from "react";
+ 
+ // src/hooks/use-aspect-ratio-fitting.tsx
+-import { useCallback as useCallback2, useLayoutEffect, useRef as useRef2, useState as useState2 } from "react";
++import {
++  useCallback as useCallback2,
++  useLayoutEffect,
++  useRef as useRef2,
++  useState as useState2,
++} from "react";
+ 
+ // ../../node_modules/.pnpm/use-resize-observer@9.1.0_react-dom@18.2.0_react@18.2.0/node_modules/use-resize-observer/dist/bundle.esm.js
+ import { useRef, useEffect, useCallback, useState, useMemo } from "react";
+@@ -496,39 +570,55 @@ function useResolvedElement(subscriber, refOrElement) {
+   var refOrElementRef = useRef(null);
+   refOrElementRef.current = refOrElement;
+   var cbElementRef = useRef(null);
+-  useEffect(function() {
++  useEffect(function () {
+     evaluateSubscription();
+   });
+-  var evaluateSubscription = useCallback(function() {
+-    var cbElement = cbElementRef.current;
+-    var refOrElement2 = refOrElementRef.current;
+-    var element = cbElement ? cbElement : refOrElement2 ? refOrElement2 instanceof Element ? refOrElement2 : refOrElement2.current : null;
+-    if (lastReportRef.current && lastReportRef.current.element === element && lastReportRef.current.subscriber === subscriber) {
+-      return;
+-    }
+-    if (lastReportRef.current && lastReportRef.current.cleanup) {
+-      lastReportRef.current.cleanup();
+-    }
+-    lastReportRef.current = {
+-      element,
+-      subscriber,
+-      // Only calling the subscriber, if there's an actual element to report.
+-      // Setting cleanup to undefined unless a subscriber returns one, as an existing cleanup function would've been just called.
+-      cleanup: element ? subscriber(element) : void 0
+-    };
+-  }, [subscriber]);
+-  useEffect(function() {
+-    return function() {
++  var evaluateSubscription = useCallback(
++    function () {
++      var cbElement = cbElementRef.current;
++      var refOrElement2 = refOrElementRef.current;
++      var element = cbElement
++        ? cbElement
++        : refOrElement2
++          ? refOrElement2 instanceof Element
++            ? refOrElement2
++            : refOrElement2.current
++          : null;
++      if (
++        lastReportRef.current &&
++        lastReportRef.current.element === element &&
++        lastReportRef.current.subscriber === subscriber
++      ) {
++        return;
++      }
++      if (lastReportRef.current && lastReportRef.current.cleanup) {
++        lastReportRef.current.cleanup();
++      }
++      lastReportRef.current = {
++        element,
++        subscriber,
++        // Only calling the subscriber, if there's an actual element to report.
++        // Setting cleanup to undefined unless a subscriber returns one, as an existing cleanup function would've been just called.
++        cleanup: element ? subscriber(element) : void 0,
++      };
++    },
++    [subscriber],
++  );
++  useEffect(function () {
++    return function () {
+       if (lastReportRef.current && lastReportRef.current.cleanup) {
+         lastReportRef.current.cleanup();
+         lastReportRef.current = null;
+       }
+     };
+   }, []);
+-  return useCallback(function(element) {
+-    cbElementRef.current = element;
+-    evaluateSubscription();
+-  }, [evaluateSubscription]);
++  return useCallback(
++    function (element) {
++      cbElementRef.current = element;
++      evaluateSubscription();
++    },
++    [evaluateSubscription],
++  );
+ }
+ function extractSize(entry, boxProp, sizeType) {
+   if (!entry[boxProp]) {
+@@ -537,12 +627,12 @@ function extractSize(entry, boxProp, sizeType) {
+     }
+     return void 0;
+   }
+-  return entry[boxProp][0] ? entry[boxProp][0][sizeType] : (
+-    // TS complains about this, because the RO entry type follows the spec and does not reflect Firefox's current
+-    // behaviour of returning objects instead of arrays for `borderBoxSize` and `contentBoxSize`.
+-    // @ts-ignore
+-    entry[boxProp][sizeType]
+-  );
++  return entry[boxProp][0]
++    ? entry[boxProp][0][sizeType]
++    : // TS complains about this, because the RO entry type follows the spec and does not reflect Firefox's current
++      // behaviour of returning objects instead of arrays for `borderBoxSize` and `contentBoxSize`.
++      // @ts-ignore
++      entry[boxProp][sizeType];
+ }
+ function useResizeObserver(opts) {
+   if (opts === void 0) {
+@@ -554,66 +644,89 @@ function useResizeObserver(opts) {
+   var round = opts.round || Math.round;
+   var resizeObserverRef = useRef();
+   var _useState = useState({
+-    width: void 0,
+-    height: void 0
+-  }), size = _useState[0], setSize = _useState[1];
++      width: void 0,
++      height: void 0,
++    }),
++    size = _useState[0],
++    setSize = _useState[1];
+   var didUnmount = useRef(false);
+-  useEffect(function() {
++  useEffect(function () {
+     didUnmount.current = false;
+-    return function() {
++    return function () {
+       didUnmount.current = true;
+     };
+   }, []);
+   var previous = useRef({
+     width: void 0,
+-    height: void 0
++    height: void 0,
+   });
+-  var refCallback = useResolvedElement(useCallback(function(element) {
+-    if (!resizeObserverRef.current || resizeObserverRef.current.box !== opts.box || resizeObserverRef.current.round !== round) {
+-      resizeObserverRef.current = {
+-        box: opts.box,
+-        round,
+-        instance: new ResizeObserver(function(entries) {
+-          var entry = entries[0];
+-          var boxProp = opts.box === "border-box" ? "borderBoxSize" : opts.box === "device-pixel-content-box" ? "devicePixelContentBoxSize" : "contentBoxSize";
+-          var reportedWidth = extractSize(entry, boxProp, "inlineSize");
+-          var reportedHeight = extractSize(entry, boxProp, "blockSize");
+-          var newWidth = reportedWidth ? round(reportedWidth) : void 0;
+-          var newHeight = reportedHeight ? round(reportedHeight) : void 0;
+-          if (previous.current.width !== newWidth || previous.current.height !== newHeight) {
+-            var newSize = {
+-              width: newWidth,
+-              height: newHeight
+-            };
+-            previous.current.width = newWidth;
+-            previous.current.height = newHeight;
+-            if (onResizeRef.current) {
+-              onResizeRef.current(newSize);
+-            } else {
+-              if (!didUnmount.current) {
+-                setSize(newSize);
++  var refCallback = useResolvedElement(
++    useCallback(
++      function (element) {
++        if (
++          !resizeObserverRef.current ||
++          resizeObserverRef.current.box !== opts.box ||
++          resizeObserverRef.current.round !== round
++        ) {
++          resizeObserverRef.current = {
++            box: opts.box,
++            round,
++            instance: new ResizeObserver(function (entries) {
++              var entry = entries[0];
++              var boxProp =
++                opts.box === "border-box"
++                  ? "borderBoxSize"
++                  : opts.box === "device-pixel-content-box"
++                    ? "devicePixelContentBoxSize"
++                    : "contentBoxSize";
++              var reportedWidth = extractSize(entry, boxProp, "inlineSize");
++              var reportedHeight = extractSize(entry, boxProp, "blockSize");
++              var newWidth = reportedWidth ? round(reportedWidth) : void 0;
++              var newHeight = reportedHeight ? round(reportedHeight) : void 0;
++              if (
++                previous.current.width !== newWidth ||
++                previous.current.height !== newHeight
++              ) {
++                var newSize = {
++                  width: newWidth,
++                  height: newHeight,
++                };
++                previous.current.width = newWidth;
++                previous.current.height = newHeight;
++                if (onResizeRef.current) {
++                  onResizeRef.current(newSize);
++                } else {
++                  if (!didUnmount.current) {
++                    setSize(newSize);
++                  }
++                }
+               }
+-            }
++            }),
++          };
++        }
++        resizeObserverRef.current.instance.observe(element, {
++          box: opts.box,
++        });
++        return function () {
++          if (resizeObserverRef.current) {
++            resizeObserverRef.current.instance.unobserve(element);
+           }
+-        })
++        };
++      },
++      [opts.box, round],
++    ),
++    opts.ref,
++  );
++  return useMemo(
++    function () {
++      return {
++        ref: refCallback,
++        width: size.width,
++        height: size.height,
+       };
+-    }
+-    resizeObserverRef.current.instance.observe(element, {
+-      box: opts.box
+-    });
+-    return function() {
+-      if (resizeObserverRef.current) {
+-        resizeObserverRef.current.instance.unobserve(element);
+-      }
+-    };
+-  }, [opts.box, round]), opts.ref);
+-  return useMemo(function() {
+-    return {
+-      ref: refCallback,
+-      width: size.width,
+-      height: size.height
+-    };
+-  }, [refCallback, size.width, size.height]);
++    },
++    [refCallback, size.width, size.height],
++  );
+ }
+ 
+ // src/hooks/use-aspect-ratio-fitting.tsx
+@@ -630,7 +743,9 @@ function useAspectRatioFitting(aspectRatio) {
+       const containerRatio = containerWidth / containerHeight;
+       const targetRatio = targetWidth / targetHeight;
+       const useVertical = containerRatio > targetRatio;
+-      const scaleFactor2 = useVertical ? containerHeight / targetHeight : containerWidth / targetWidth;
++      const scaleFactor2 = useVertical
++        ? containerHeight / targetHeight
++        : containerWidth / targetWidth;
+       const scaledWidth = targetWidth * scaleFactor2;
+       const scaledHeight = targetHeight * scaleFactor2;
+       let x0 = 0;
+@@ -646,7 +761,7 @@ function useAspectRatioFitting(aspectRatio) {
+       setScaleFactor(scaleFactor2);
+       setTransformOrigin({ x: x0, y: y0 });
+     },
+-    [targetWidth, targetHeight]
++    [targetWidth, targetHeight],
+   );
+   useLayoutEffect(() => {
+     if (!containerRef || !containerRef.current) {
+@@ -657,7 +772,7 @@ function useAspectRatioFitting(aspectRatio) {
+   }, [targetWidth, targetHeight, recalculate]);
+   useResizeObserver({
+     onResize: recalculate,
+-    ref: containerRef
++    ref: containerRef,
+   });
+   return [
+     containerRef,
+@@ -667,8 +782,8 @@ function useAspectRatioFitting(aspectRatio) {
+       position: "relative",
+       transform: `scale(${scaleFactor})`,
+       transformOrigin: `${transformOrigin.x}px ${transformOrigin.y}px`,
+-      width: targetWidth
+-    }
++      width: targetWidth,
++    },
+   ];
+ }
+ 
+@@ -678,14 +793,14 @@ var GOTO_FINAL_STEP = null;
+ var initialDeckState = {
+   activeView: {
+     slideIndex: 0,
+-    stepIndex: 0
++    stepIndex: 0,
+   },
+   initialized: false,
+   navigationDirection: 0,
+   pendingView: {
+     slideIndex: 0,
+-    stepIndex: 0
+-  }
++    stepIndex: 0,
++  },
+ };
+ function deckReducer(state, { payload = {}, type }) {
+   switch (type) {
+@@ -694,12 +809,12 @@ function deckReducer(state, { payload = {}, type }) {
+         activeView: { ...state.activeView, ...payload },
+         initialized: true,
+         navigationDirection: 0,
+-        pendingView: { ...state.pendingView, ...payload }
++        pendingView: { ...state.pendingView, ...payload },
+       };
+     case "SKIP_TO":
+       return {
+         ...state,
+-        pendingView: { ...state.pendingView, ...payload }
++        pendingView: { ...state.pendingView, ...payload },
+       };
+     case "STEP_FORWARD":
+       return {
+@@ -707,8 +822,8 @@ function deckReducer(state, { payload = {}, type }) {
+         navigationDirection: 1,
+         pendingView: {
+           ...state.pendingView,
+-          stepIndex: state.pendingView.stepIndex + 1
+-        }
++          stepIndex: state.pendingView.stepIndex + 1,
++        },
+       };
+     case "STEP_BACKWARD":
+       return {
+@@ -716,8 +831,8 @@ function deckReducer(state, { payload = {}, type }) {
+         navigationDirection: -1,
+         pendingView: {
+           ...state.pendingView,
+-          stepIndex: state.pendingView.stepIndex - 1
+-        }
++          stepIndex: state.pendingView.stepIndex - 1,
++        },
+       };
+     case "ADVANCE_SLIDE":
+       return {
+@@ -726,8 +841,8 @@ function deckReducer(state, { payload = {}, type }) {
+         pendingView: {
+           ...state.pendingView,
+           slideIndex: state.pendingView.slideIndex + 1,
+-          stepIndex: 0
+-        }
++          stepIndex: 0,
++        },
+       };
+     case "REGRESS_SLIDE":
+       return {
+@@ -736,21 +851,21 @@ function deckReducer(state, { payload = {}, type }) {
+         pendingView: {
+           ...state.pendingView,
+           slideIndex: Math.max(0, state.pendingView.slideIndex - 1),
+-          stepIndex: payload?.stepIndex ?? GOTO_FINAL_STEP
+-        }
++          stepIndex: payload?.stepIndex ?? GOTO_FINAL_STEP,
++        },
+       };
+     case "COMMIT_TRANSITION": {
+       const pendingView = { ...state.pendingView, ...payload };
+       return {
+         ...state,
+         activeView: { ...state.activeView, ...pendingView },
+-        pendingView
++        pendingView,
+       };
+     }
+     case "CANCEL_TRANSITION":
+       return {
+         ...state,
+-        pendingView: { ...state.pendingView, ...state.activeView }
++        pendingView: { ...state.pendingView, ...state.activeView },
+       };
+     default:
+       return state;
+@@ -759,7 +874,7 @@ function deckReducer(state, { payload = {}, type }) {
+ function useDeckState() {
+   const [
+     { activeView, initialized, navigationDirection, pendingView },
+-    dispatch
++    dispatch,
+   ] = useReducer(deckReducer, initialDeckState);
+   return {
+     activeView,
+@@ -770,54 +885,57 @@ function useDeckState() {
+       () => ({
+         advanceSlide: () => dispatch({ type: "ADVANCE_SLIDE" }),
+         cancelTransition: () => dispatch({ type: "CANCEL_TRANSITION" }),
+-        commitTransition: (payload) => dispatch({ payload, type: "COMMIT_TRANSITION" }),
++        commitTransition: (payload) =>
++          dispatch({ payload, type: "COMMIT_TRANSITION" }),
+         initializeTo: (payload) => dispatch({ payload, type: "INITIALIZE_TO" }),
+         regressSlide: (payload) => dispatch({ payload, type: "REGRESS_SLIDE" }),
+         skipTo: (payload) => dispatch({ payload, type: "SKIP_TO" }),
+         stepBackward: () => dispatch({ type: "STEP_BACKWARD" }),
+-        stepForward: () => dispatch({ type: "STEP_FORWARD" })
++        stepForward: () => dispatch({ type: "STEP_FORWARD" }),
+       }),
+-      [dispatch]
+-    )
++      [dispatch],
++    ),
+   };
+ }
+ 
+ // ../../node_modules/.pnpm/@babel+runtime@7.23.2/node_modules/@babel/runtime/helpers/esm/extends.js
+ function _extends() {
+-  _extends = Object.assign ? Object.assign.bind() : function(target) {
+-    for (var i = 1; i < arguments.length; i++) {
+-      var source = arguments[i];
+-      for (var key in source) {
+-        if (Object.prototype.hasOwnProperty.call(source, key)) {
+-          target[key] = source[key];
++  _extends = Object.assign
++    ? Object.assign.bind()
++    : function (target) {
++        for (var i = 1; i < arguments.length; i++) {
++          var source = arguments[i];
++          for (var key in source) {
++            if (Object.prototype.hasOwnProperty.call(source, key)) {
++              target[key] = source[key];
++            }
++          }
+         }
+-      }
+-    }
+-    return target;
+-  };
++        return target;
++      };
+   return _extends.apply(this, arguments);
+ }
+ 
+ // ../../node_modules/.pnpm/history@5.3.0/node_modules/history/index.js
+ var Action;
+-(function(Action2) {
++(function (Action2) {
+   Action2["Pop"] = "POP";
+   Action2["Push"] = "PUSH";
+   Action2["Replace"] = "REPLACE";
+ })(Action || (Action = {}));
+-var readOnly = true ? function(obj) {
+-  return Object.freeze(obj);
+-} : function(obj) {
+-  return obj;
+-};
++var readOnly = true
++  ? function (obj) {
++      return Object.freeze(obj);
++    }
++  : function (obj) {
++      return obj;
++    };
+ function warning(cond, message) {
+   if (!cond) {
+-    if (typeof console !== "undefined")
+-      console.warn(message);
++    if (typeof console !== "undefined") console.warn(message);
+     try {
+       throw new Error(message);
+-    } catch (e) {
+-    }
++    } catch (e) {}
+   }
+ }
+ var BeforeUnloadEventType = "beforeunload";
+@@ -826,18 +944,27 @@ function createBrowserHistory(options) {
+   if (options === void 0) {
+     options = {};
+   }
+-  var _options = options, _options$window = _options.window, window2 = _options$window === void 0 ? document.defaultView : _options$window;
++  var _options = options,
++    _options$window = _options.window,
++    window2 =
++      _options$window === void 0 ? document.defaultView : _options$window;
+   var globalHistory = window2.history;
+   function getIndexAndLocation() {
+-    var _window$location = window2.location, pathname = _window$location.pathname, search = _window$location.search, hash = _window$location.hash;
++    var _window$location = window2.location,
++      pathname = _window$location.pathname,
++      search = _window$location.search,
++      hash = _window$location.hash;
+     var state = globalHistory.state || {};
+-    return [state.idx, readOnly({
+-      pathname,
+-      search,
+-      hash,
+-      state: state.usr || null,
+-      key: state.key || "default"
+-    })];
++    return [
++      state.idx,
++      readOnly({
++        pathname,
++        search,
++        hash,
++        state: state.usr || null,
++        key: state.key || "default",
++      }),
++    ];
+   }
+   var blockedPopTx = null;
+   function handlePop() {
+@@ -846,7 +973,9 @@ function createBrowserHistory(options) {
+       blockedPopTx = null;
+     } else {
+       var nextAction = Action.Pop;
+-      var _getIndexAndLocation = getIndexAndLocation(), nextIndex = _getIndexAndLocation[0], nextLocation = _getIndexAndLocation[1];
++      var _getIndexAndLocation = getIndexAndLocation(),
++        nextIndex = _getIndexAndLocation[0],
++        nextLocation = _getIndexAndLocation[1];
+       if (blockers.length) {
+         if (nextIndex != null) {
+           var delta = index - nextIndex;
+@@ -856,18 +985,20 @@ function createBrowserHistory(options) {
+               location: nextLocation,
+               retry: function retry() {
+                 go(delta * -1);
+-              }
++              },
+             };
+             go(delta);
+           }
+         } else {
+-          true ? warning(
+-            false,
+-            // TODO: Write up a doc that explains our blocking strategy in
+-            // detail and link to it here so people can understand better what
+-            // is going on and how to avoid it.
+-            "You are trying to block a POP navigation to a location that was not created by the history library. The block will fail silently in production, but in general you should do all navigation with the history library (instead of using window.history.pushState directly) to avoid this situation."
+-          ) : void 0;
++          true
++            ? warning(
++                false,
++                // TODO: Write up a doc that explains our blocking strategy in
++                // detail and link to it here so people can understand better what
++                // is going on and how to avoid it.
++                "You are trying to block a POP navigation to a location that was not created by the history library. The block will fail silently in production, but in general you should do all navigation with the history library (instead of using window.history.pushState directly) to avoid this situation.",
++              )
++            : void 0;
+         }
+       } else {
+         applyTx(nextAction);
+@@ -876,14 +1007,19 @@ function createBrowserHistory(options) {
+   }
+   window2.addEventListener(PopStateEventType, handlePop);
+   var action = Action.Pop;
+-  var _getIndexAndLocation2 = getIndexAndLocation(), index = _getIndexAndLocation2[0], location = _getIndexAndLocation2[1];
++  var _getIndexAndLocation2 = getIndexAndLocation(),
++    index = _getIndexAndLocation2[0],
++    location = _getIndexAndLocation2[1];
+   var listeners = createEvents();
+   var blockers = createEvents();
+   if (index == null) {
+     index = 0;
+-    globalHistory.replaceState(_extends({}, globalHistory.state, {
+-      idx: index
+-    }), "");
++    globalHistory.replaceState(
++      _extends({}, globalHistory.state, {
++        idx: index,
++      }),
++      "",
++    );
+   }
+   function createHref(to2) {
+     return typeof to2 === "string" ? to2 : createPath(to2);
+@@ -892,28 +1028,41 @@ function createBrowserHistory(options) {
+     if (state === void 0) {
+       state = null;
+     }
+-    return readOnly(_extends({
+-      pathname: location.pathname,
+-      hash: "",
+-      search: ""
+-    }, typeof to2 === "string" ? parsePath(to2) : to2, {
+-      state,
+-      key: createKey()
+-    }));
++    return readOnly(
++      _extends(
++        {
++          pathname: location.pathname,
++          hash: "",
++          search: "",
++        },
++        typeof to2 === "string" ? parsePath(to2) : to2,
++        {
++          state,
++          key: createKey(),
++        },
++      ),
++    );
+   }
+   function getHistoryStateAndUrl(nextLocation, index2) {
+-    return [{
+-      usr: nextLocation.state,
+-      key: nextLocation.key,
+-      idx: index2
+-    }, createHref(nextLocation)];
++    return [
++      {
++        usr: nextLocation.state,
++        key: nextLocation.key,
++        idx: index2,
++      },
++      createHref(nextLocation),
++    ];
+   }
+   function allowTx(action2, location2, retry) {
+-    return !blockers.length || (blockers.call({
+-      action: action2,
+-      location: location2,
+-      retry
+-    }), false);
++    return (
++      !blockers.length ||
++      (blockers.call({
++        action: action2,
++        location: location2,
++        retry,
++      }),
++      false)
++    );
+   }
+   function applyTx(nextAction) {
+     action = nextAction;
+@@ -922,7 +1071,7 @@ function createBrowserHistory(options) {
+     location = _getIndexAndLocation3[1];
+     listeners.call({
+       action,
+-      location
++      location,
+     });
+   }
+   function push(to2, state) {
+@@ -932,7 +1081,12 @@ function createBrowserHistory(options) {
+       push(to2, state);
+     }
+     if (allowTx(nextAction, nextLocation, retry)) {
+-      var _getHistoryStateAndUr = getHistoryStateAndUrl(nextLocation, index + 1), historyState = _getHistoryStateAndUr[0], url = _getHistoryStateAndUr[1];
++      var _getHistoryStateAndUr = getHistoryStateAndUrl(
++          nextLocation,
++          index + 1,
++        ),
++        historyState = _getHistoryStateAndUr[0],
++        url = _getHistoryStateAndUr[1];
+       try {
+         globalHistory.pushState(historyState, "", url);
+       } catch (error) {
+@@ -948,7 +1102,9 @@ function createBrowserHistory(options) {
+       replace(to2, state);
+     }
+     if (allowTx(nextAction, nextLocation, retry)) {
+-      var _getHistoryStateAndUr2 = getHistoryStateAndUrl(nextLocation, index), historyState = _getHistoryStateAndUr2[0], url = _getHistoryStateAndUr2[1];
++      var _getHistoryStateAndUr2 = getHistoryStateAndUrl(nextLocation, index),
++        historyState = _getHistoryStateAndUr2[0],
++        url = _getHistoryStateAndUr2[1];
+       globalHistory.replaceState(historyState, "", url);
+       applyTx(nextAction);
+     }
+@@ -981,13 +1137,16 @@ function createBrowserHistory(options) {
+       if (blockers.length === 1) {
+         window2.addEventListener(BeforeUnloadEventType, promptBeforeUnload);
+       }
+-      return function() {
++      return function () {
+         unblock();
+         if (!blockers.length) {
+-          window2.removeEventListener(BeforeUnloadEventType, promptBeforeUnload);
++          window2.removeEventListener(
++            BeforeUnloadEventType,
++            promptBeforeUnload,
++          );
+         }
+       };
+-    }
++    },
+   };
+   return history;
+ }
+@@ -1003,24 +1162,29 @@ function createEvents() {
+     },
+     push: function push(fn) {
+       handlers.push(fn);
+-      return function() {
+-        handlers = handlers.filter(function(handler) {
++      return function () {
++        handlers = handlers.filter(function (handler) {
+           return handler !== fn;
+         });
+       };
+     },
+     call: function call2(arg) {
+-      handlers.forEach(function(fn) {
++      handlers.forEach(function (fn) {
+         return fn && fn(arg);
+       });
+-    }
++    },
+   };
+ }
+ function createKey() {
+   return Math.random().toString(36).substr(2, 8);
+ }
+ function createPath(_ref) {
+-  var _ref$pathname = _ref.pathname, pathname = _ref$pathname === void 0 ? "/" : _ref$pathname, _ref$search = _ref.search, search = _ref$search === void 0 ? "" : _ref$search, _ref$hash = _ref.hash, hash = _ref$hash === void 0 ? "" : _ref$hash;
++  var _ref$pathname = _ref.pathname,
++    pathname = _ref$pathname === void 0 ? "/" : _ref$pathname,
++    _ref$search = _ref.search,
++    search = _ref$search === void 0 ? "" : _ref$search,
++    _ref$hash = _ref.hash,
++    hash = _ref$hash === void 0 ? "" : _ref$hash;
+   if (search && search !== "?")
+     pathname += search.charAt(0) === "?" ? search : "?" + search;
+   if (hash && hash !== "#")
+@@ -1048,10 +1212,15 @@ function parsePath(path) {
+ }
+ 
+ // src/hooks/use-location-sync.tsx
+-import { useCallback as useCallback3, useEffect as useEffect2, useState as useState3 } from "react";
++import {
++  useCallback as useCallback3,
++  useEffect as useEffect2,
++  useState as useState3,
++} from "react";
+ function mapLocationToState(location) {
+   const { search } = location;
+-  const { slideIndex: rawSlideIndex, stepIndex: rawStepIndex } = Object.fromEntries(new URLSearchParams(search));
++  const { slideIndex: rawSlideIndex, stepIndex: rawStepIndex } =
++    Object.fromEntries(new URLSearchParams(search));
+   const nextState = {};
+   if (rawSlideIndex === void 0) {
+     return nextState;
+@@ -1083,21 +1252,20 @@ function mapStateToLocation(state) {
+     query.stepIndex = "final";
+   }
+   return {
+-    search: "?" + new URLSearchParams(query).toString()
++    search: "?" + new URLSearchParams(query).toString(),
+   };
+ }
+-function useLocationSync({
+-  historyFactory = createBrowserHistory,
+-  setState
+-}) {
+-  const [history] = useState3(
+-    () => typeof document !== "undefined" ? historyFactory() : null
++function useLocationSync({ historyFactory = createBrowserHistory, setState }) {
++  const [history] = useState3(() =>
++    typeof document !== "undefined" ? historyFactory() : null,
+   );
+   const [initialized, setInitialized] = useState3(false);
+   useEffect2(() => {
+-    return initialized ? history?.listen(({ location }) => {
+-      setState(mapLocationToState(location));
+-    }) : void 0;
++    return initialized
++      ? history?.listen(({ location }) => {
++          setState(mapLocationToState(location));
++        })
++      : void 0;
+   }, [initialized, history, setState]);
+   return [
+     useCallback3(
+@@ -1108,13 +1276,13 @@ function useLocationSync({
+         const { location } = history;
+         const initialState2 = {
+           ...defaultState,
+-          ...mapLocationToState(location)
++          ...mapLocationToState(location),
+         };
+         history.replace(mapStateToLocation(initialState2));
+         setInitialized(true);
+         return initialState2;
+       },
+-      [history]
++      [history],
+     ),
+     useCallback3(
+       (state) => {
+@@ -1124,14 +1292,14 @@ function useLocationSync({
+         const { location } = history;
+         const nextLocation = mapStateToLocation({
+           ...mapLocationToState(location),
+-          ...state
++          ...state,
+         });
+         if (location.search != nextLocation.search) {
+           history.push(nextLocation);
+         }
+       },
+-      [history, initialized]
+-    )
++      [history, initialized],
++    ),
+   ];
+ }
+ 
+@@ -1144,7 +1312,7 @@ function useMousetrap(keybinds, deps) {
+       const callback = keybinds[combo];
+       if (typeof callback !== "function") {
+         throw new TypeError(
+-          `Expected type 'function' in useMousetrap for combo '${combo}', but got ${typeof callback}`
++          `Expected type 'function' in useMousetrap for combo '${combo}', but got ${typeof callback}`,
+         );
+       }
+       import_mousetrap.default.bind(combo, callback);
+@@ -1161,55 +1329,55 @@ function useMousetrap(keybinds, deps) {
+ var defaultTransition = {
+   enter: {
+     opacity: 1,
+-    transform: "translateX(0%)"
++    transform: "translateX(0%)",
+   },
+   from: {
+     opacity: 0,
+-    transform: "translateX(100%)"
++    transform: "translateX(100%)",
+   },
+   leave: {
+     opacity: 1,
+-    transform: "translateX(-100%)"
+-  }
++    transform: "translateX(-100%)",
++  },
+ };
+ var Transitions = {
+   default: defaultTransition,
+   leaveOnly: {
+     enter: {
+-      transform: "translateX(0%)"
++      transform: "translateX(0%)",
+     },
+     from: {},
+     leave: {
+-      transform: "translateX(-100%)"
+-    }
++      transform: "translateX(-100%)",
++    },
+   },
+   none: {
+     enter: {},
+     from: {},
+-    leave: {}
++    leave: {},
+   },
+   opacity: {
+     enter: {
+-      opacity: 1
++      opacity: 1,
+     },
+     from: {
+-      opacity: 0
++      opacity: 0,
+     },
+     leave: {
+-      opacity: 1
+-    }
++      opacity: 1,
++    },
+   },
+   transformRight: {
+     enter: {
+-      transform: "translateX(0%)"
++      transform: "translateX(0%)",
+     },
+     from: {
+-      transform: "translateX(100%)"
++      transform: "translateX(100%)",
+     },
+     leave: {
+-      transform: "translateX(-100%)"
+-    }
+-  }
++      transform: "translateX(-100%)",
++    },
++  },
+ };
+ 
+ // src/deck.tsx
+@@ -1222,7 +1390,7 @@ var _backdropStyle = {
+   overflow: "hidden",
+   position: "fixed",
+   top: 0,
+-  width: "100vw"
++  width: "100vw",
+ };
+ function Deck({
+   aspectRatio = 16 / 9,
+@@ -1230,7 +1398,7 @@ function Deck({
+   className,
+   slides,
+   style,
+-  transition = defaultTransition
++  transition = defaultTransition,
+ }) {
+   const {
+     activeView,
+@@ -1244,7 +1412,7 @@ function Deck({
+     regressSlide,
+     skipTo,
+     stepBackward,
+-    stepForward
++    stepForward,
+   } = useDeckState();
+   const [backdropRef, fitAspectRatioStyle] = useAspectRatioFitting(aspectRatio);
+   const onSwiped = useCallback4(
+@@ -1257,17 +1425,19 @@ function Deck({
+         }
+       }
+     },
+-    [regressSlide, stepForward]
++    [regressSlide, stepForward],
+   );
+   useMousetrap(
+     {
+       left: () => stepBackward(),
+-      right: () => stepForward()
++      right: () => stepForward(),
++      h: () => stepBackward(),
++      l: () => stepForward(),
+     },
+-    [stepForward, stepBackward]
++    [stepForward, stepBackward],
+   );
+   const [syncLocation, onActiveStateChange] = useLocationSync({
+-    setState: skipTo
++    setState: skipTo,
+   });
+   useEffect4(() => {
+     if (!initialized) {
+@@ -1279,42 +1449,58 @@ function Deck({
+     initializeTo(
+       syncLocation({
+         slideIndex: 0,
+-        stepIndex: 0
+-      })
++        stepIndex: 0,
++      }),
+     );
+   }, [initializeTo, syncLocation]);
+-  return /* @__PURE__ */ jsx(
+-    "div",
+-    {
+-      className,
+-      ref: backdropRef,
+-      style: {
+-        ..._backdropStyle,
+-        ...backdropStyle
+-      },
+-      children: /* @__PURE__ */ jsx(
+-        DeckContext.Provider,
+-        {
+-          value: {
+-            activeView,
+-            advanceSlide,
+-            cancelTransition,
+-            commitTransition,
+-            initialized,
+-            navigationDirection,
+-            onSwiped,
+-            pendingView,
+-            regressSlide,
+-            slideCount: slides.length,
+-            stepBackward,
+-            stepForward,
+-            transition
+-          },
+-          children: /* @__PURE__ */ jsx("div", { style: { ...fitAspectRatioStyle, ...style }, children: slides })
+-        }
+-      )
+-    }
++
++  const handleClick = useCallback4(
++    (event) => {
++      event.stopPropagation();
++      stepForward();
++    },
++    [stepForward],
+   );
++  const handleRightClick = useCallback4(
++    (event) => {
++      if (event.button === 2) {
++        event.preventDefault();
++        stepBackward();
++      }
++    },
++    [stepBackward],
++  );
++  return /* @__PURE__ */ jsx("div", {
++    className,
++    ref: backdropRef,
++    style: {
++      ..._backdropStyle,
++      ...backdropStyle,
++    },
++    onClick: handleClick,
++    onContextMenu: handleRightClick,
++    children: /* @__PURE__ */ jsx(DeckContext.Provider, {
++      value: {
++        activeView,
++        advanceSlide,
++        cancelTransition,
++        commitTransition,
++        initialized,
++        navigationDirection,
++        onSwiped,
++        pendingView,
++        regressSlide,
++        slideCount: slides.length,
++        stepBackward,
++        stepForward,
++        transition,
++      },
++      children: /* @__PURE__ */ jsx("div", {
++        style: { ...fitAspectRatioStyle, ...style },
++        children: slides,
++      }),
++    }),
++  });
+ }
+ 
+ // src/render.tsx
+@@ -1327,48 +1513,45 @@ var MDXContext = React.createContext(emptyComponents);
+ function useMDXComponents(components) {
+   const contextComponents = React.useContext(MDXContext);
+   return React.useMemo(
+-    function() {
++    function () {
+       if (typeof components === "function") {
+         return components(contextComponents);
+       }
+       return { ...contextComponents, ...components };
+     },
+-    [contextComponents, components]
++    [contextComponents, components],
+   );
+ }
+ function MDXProvider(props) {
+   let allComponents;
+   if (props.disableParentContext) {
+-    allComponents = typeof props.components === "function" ? props.components(emptyComponents) : props.components || emptyComponents;
++    allComponents =
++      typeof props.components === "function"
++        ? props.components(emptyComponents)
++        : props.components || emptyComponents;
+   } else {
+     allComponents = useMDXComponents(props.components);
+   }
+   return React.createElement(
+     MDXContext.Provider,
+     { value: allComponents },
+-    props.children
++    props.children,
+   );
+ }
+ 
+ // src/components/Image.tsx
+ import { jsx as jsx2 } from "react/jsx-runtime";
+-function Image({
+-  src: source,
+-  ...props
+-}) {
++function Image({ src: source, ...props }) {
+   if (!source) {
+     return null;
+   }
+   const [src, query] = source.split("?");
+-  return /* @__PURE__ */ jsx2(
+-    "img",
+-    {
+-      loading: "lazy",
+-      src,
+-      style: Object.fromEntries(new URLSearchParams(query)),
+-      ...props
+-    }
+-  );
++  return /* @__PURE__ */ jsx2("img", {
++    loading: "lazy",
++    src,
++    style: Object.fromEntries(new URLSearchParams(query)),
++    ...props,
++  });
+ }
+ 
+ // src/components/Components.tsx
+@@ -1381,15 +1564,22 @@ import {
+   useContext as useContext4,
+   useEffect as useEffect7,
+   useMemo as useMemo5,
+-  useState as useState6
++  useState as useState6,
+ } from "react";
+ 
+ // ../../node_modules/.pnpm/@react-spring+shared@9.7.3_react@18.2.0/node_modules/@react-spring/shared/dist/react-spring_shared.modern.mjs
+ import { useRef as useRef3 } from "react";
+ import { useState as useState4 } from "react";
+ import { useRef as useRef22 } from "react";
+-import { useEffect as useEffect5, useLayoutEffect as useLayoutEffect2 } from "react";
+-import { useEffect as useEffect22, useRef as useRef32, useState as useState22 } from "react";
++import {
++  useEffect as useEffect5,
++  useLayoutEffect as useLayoutEffect2,
++} from "react";
++import {
++  useEffect as useEffect22,
++  useRef as useRef32,
++  useState as useState22,
++} from "react";
+ import { useEffect as useEffect32 } from "react";
+ import { useEffect as useEffect42, useRef as useRef4 } from "react";
+ import { useState as useState32 } from "react";
+@@ -1405,7 +1595,7 @@ __export(globals_exports, {
+   createStringInterpolator: () => createStringInterpolator,
+   skipAnimation: () => skipAnimation,
+   to: () => to,
+-  willAdvance: () => willAdvance
++  willAdvance: () => willAdvance,
+ });
+ var updateQueue = makeQueue();
+ var raf = (fn) => schedule(fn, updateQueue);
+@@ -1422,8 +1612,7 @@ raf.setTimeout = (handler, ms) => {
+   const time = raf.now() + ms;
+   const cancel = () => {
+     const i = timeouts.findIndex((t) => t.cancel == cancel);
+-    if (~i)
+-      timeouts.splice(i, 1);
++    if (~i) timeouts.splice(i, 1);
+     pendingCount -= ~i ? 1 : 0;
+   };
+   const timeout = { time, handler, cancel };
+@@ -1432,7 +1621,8 @@ raf.setTimeout = (handler, ms) => {
+   start();
+   return timeout;
+ };
+-var findTimeout = (time) => ~(~timeouts.findIndex((t) => t.time > time) || ~timeouts.length);
++var findTimeout = (time) =>
++  ~(~timeouts.findIndex((t) => t.time > time) || ~timeouts.length);
+ raf.cancel = (fn) => {
+   onStartQueue.delete(fn);
+   onFrameQueue.delete(fn);
+@@ -1465,20 +1655,21 @@ raf.throttle = (fn) => {
+   };
+   return throttled;
+ };
+-var nativeRaf = typeof window != "undefined" ? window.requestAnimationFrame : (
+-  // eslint-disable-next-line @typescript-eslint/no-empty-function
+-  () => {
+-  }
+-);
+-raf.use = (impl) => nativeRaf = impl;
+-raf.now = typeof performance != "undefined" ? () => performance.now() : Date.now;
++var nativeRaf =
++  typeof window != "undefined"
++    ? window.requestAnimationFrame
++    : // eslint-disable-next-line @typescript-eslint/no-empty-function
++      () => {};
++raf.use = (impl) => (nativeRaf = impl);
++raf.now =
++  typeof performance != "undefined" ? () => performance.now() : Date.now;
+ raf.batchedUpdates = (fn) => fn();
+ raf.catch = console.error;
+ raf.frameLoop = "always";
+ raf.advance = () => {
+   if (raf.frameLoop !== "demand") {
+     console.warn(
+-      "Cannot call the manual advancement of rafz whilst frameLoop is not set as demand"
++      "Cannot call the manual advancement of rafz whilst frameLoop is not set as demand",
+     );
+   } else {
+     update();
+@@ -1551,7 +1742,7 @@ function makeQueue() {
+         pendingCount += next.size;
+         current = next;
+       }
+-    }
++    },
+   };
+ }
+ function eachSafely(values, each2) {
+@@ -1563,24 +1754,26 @@ function eachSafely(values, each2) {
+     }
+   });
+ }
+-function noop() {
+-}
+-var defineHidden = (obj, key, value) => Object.defineProperty(obj, key, { value, writable: true, configurable: true });
++function noop() {}
++var defineHidden = (obj, key, value) =>
++  Object.defineProperty(obj, key, {
++    value,
++    writable: true,
++    configurable: true,
++  });
+ var is = {
+   arr: Array.isArray,
+   obj: (a) => !!a && a.constructor.name === "Object",
+   fun: (a) => typeof a === "function",
+   str: (a) => typeof a === "string",
+   num: (a) => typeof a === "number",
+-  und: (a) => a === void 0
++  und: (a) => a === void 0,
+ };
+ function isEqual(a, b) {
+   if (is.arr(a)) {
+-    if (!is.arr(b) || a.length !== b.length)
+-      return false;
++    if (!is.arr(b) || a.length !== b.length) return false;
+     for (let i = 0; i < a.length; i++) {
+-      if (a[i] !== b[i])
+-        return false;
++      if (a[i] !== b[i]) return false;
+     }
+     return true;
+   }
+@@ -1600,7 +1793,7 @@ function eachProp(obj, fn, ctx2) {
+     }
+   }
+ }
+-var toArray = (a) => is.und(a) ? [] : is.arr(a) ? a : [a];
++var toArray = (a) => (is.und(a) ? [] : is.arr(a) ? a : [a]);
+ function flush(queue, iterator) {
+   if (queue.size) {
+     const items = Array.from(queue);
+@@ -1609,31 +1802,26 @@ function flush(queue, iterator) {
+   }
+ }
+ var flushCalls = (queue, ...args) => flush(queue, (fn) => fn(...args));
+-var isSSR = () => typeof window === "undefined" || !window.navigator || /ServerSideRendering|^Deno\//.test(window.navigator.userAgent);
++var isSSR = () =>
++  typeof window === "undefined" ||
++  !window.navigator ||
++  /ServerSideRendering|^Deno\//.test(window.navigator.userAgent);
+ var createStringInterpolator;
+ var to;
+ var colors = null;
+ var skipAnimation = false;
+ var willAdvance = noop;
+ var assign = (globals) => {
+-  if (globals.to)
+-    to = globals.to;
+-  if (globals.now)
+-    raf.now = globals.now;
+-  if (globals.colors !== void 0)
+-    colors = globals.colors;
+-  if (globals.skipAnimation != null)
+-    skipAnimation = globals.skipAnimation;
++  if (globals.to) to = globals.to;
++  if (globals.now) raf.now = globals.now;
++  if (globals.colors !== void 0) colors = globals.colors;
++  if (globals.skipAnimation != null) skipAnimation = globals.skipAnimation;
+   if (globals.createStringInterpolator)
+     createStringInterpolator = globals.createStringInterpolator;
+-  if (globals.requestAnimationFrame)
+-    raf.use(globals.requestAnimationFrame);
+-  if (globals.batchedUpdates)
+-    raf.batchedUpdates = globals.batchedUpdates;
+-  if (globals.willAdvance)
+-    willAdvance = globals.willAdvance;
+-  if (globals.frameLoop)
+-    raf.frameLoop = globals.frameLoop;
++  if (globals.requestAnimationFrame) raf.use(globals.requestAnimationFrame);
++  if (globals.batchedUpdates) raf.batchedUpdates = globals.batchedUpdates;
++  if (globals.willAdvance) willAdvance = globals.willAdvance;
++  if (globals.frameLoop) raf.frameLoop = globals.frameLoop;
+ };
+ var startQueue = /* @__PURE__ */ new Set();
+ var currentFrame = [];
+@@ -1675,7 +1863,7 @@ var frameLoop = {
+   clear() {
+     currentFrame = [];
+     startQueue.clear();
+-  }
++  },
+ };
+ function flushStartQueue() {
+   startQueue.forEach(startSafely);
+@@ -1683,14 +1871,13 @@ function flushStartQueue() {
+   raf(advance);
+ }
+ function startSafely(animation) {
+-  if (!currentFrame.includes(animation))
+-    startUnsafely(animation);
++  if (!currentFrame.includes(animation)) startUnsafely(animation);
+ }
+ function startUnsafely(animation) {
+   currentFrame.splice(
+     findIndex(currentFrame, (other) => other.priority > animation.priority),
+     0,
+-    animation
++    animation,
+   );
+ }
+ function advance(dt) {
+@@ -1867,7 +2054,7 @@ var colors2 = {
+   white: 4294967295,
+   whitesmoke: 4126537215,
+   yellow: 4294902015,
+-  yellowgreen: 2597139199
++  yellowgreen: 2597139199,
+ };
+ var NUMBER = "[-+]?\\d*\\.?\\d+";
+ var PERCENTAGE = NUMBER + "%";
+@@ -1877,94 +2064,109 @@ function call(...parts) {
+ var rgb = new RegExp("rgb" + call(NUMBER, NUMBER, NUMBER));
+ var rgba = new RegExp("rgba" + call(NUMBER, NUMBER, NUMBER, NUMBER));
+ var hsl = new RegExp("hsl" + call(NUMBER, PERCENTAGE, PERCENTAGE));
+-var hsla = new RegExp(
+-  "hsla" + call(NUMBER, PERCENTAGE, PERCENTAGE, NUMBER)
+-);
++var hsla = new RegExp("hsla" + call(NUMBER, PERCENTAGE, PERCENTAGE, NUMBER));
+ var hex3 = /^#([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/;
+-var hex4 = /^#([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/;
++var hex4 =
++  /^#([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/;
+ var hex6 = /^#([0-9a-fA-F]{6})$/;
+ var hex8 = /^#([0-9a-fA-F]{8})$/;
+ function normalizeColor(color) {
+   let match;
+   if (typeof color === "number") {
+-    return color >>> 0 === color && color >= 0 && color <= 4294967295 ? color : null;
++    return color >>> 0 === color && color >= 0 && color <= 4294967295
++      ? color
++      : null;
+   }
+-  if (match = hex6.exec(color))
+-    return parseInt(match[1] + "ff", 16) >>> 0;
++  if ((match = hex6.exec(color))) return parseInt(match[1] + "ff", 16) >>> 0;
+   if (colors && colors[color] !== void 0) {
+     return colors[color];
+   }
+-  if (match = rgb.exec(color)) {
+-    return (parse255(match[1]) << 24 | // r
+-    parse255(match[2]) << 16 | // g
+-    parse255(match[3]) << 8 | // b
+-    255) >>> // a
+-    0;
+-  }
+-  if (match = rgba.exec(color)) {
+-    return (parse255(match[1]) << 24 | // r
+-    parse255(match[2]) << 16 | // g
+-    parse255(match[3]) << 8 | // b
+-    parse1(match[4])) >>> // a
+-    0;
+-  }
+-  if (match = hex3.exec(color)) {
+-    return parseInt(
+-      match[1] + match[1] + // r
+-      match[2] + match[2] + // g
+-      match[3] + match[3] + // b
+-      "ff",
+-      // a
+-      16
+-    ) >>> 0;
+-  }
+-  if (match = hex8.exec(color))
+-    return parseInt(match[1], 16) >>> 0;
+-  if (match = hex4.exec(color)) {
+-    return parseInt(
+-      match[1] + match[1] + // r
+-      match[2] + match[2] + // g
+-      match[3] + match[3] + // b
+-      match[4] + match[4],
+-      // a
+-      16
+-    ) >>> 0;
+-  }
+-  if (match = hsl.exec(color)) {
+-    return (hslToRgb(
+-      parse360(match[1]),
+-      // h
+-      parsePercentage(match[2]),
+-      // s
+-      parsePercentage(match[3])
+-      // l
+-    ) | 255) >>> // a
+-    0;
+-  }
+-  if (match = hsla.exec(color)) {
+-    return (hslToRgb(
+-      parse360(match[1]),
+-      // h
+-      parsePercentage(match[2]),
+-      // s
+-      parsePercentage(match[3])
+-      // l
+-    ) | parse1(match[4])) >>> // a
+-    0;
++  if ((match = rgb.exec(color))) {
++    return (
++      ((parse255(match[1]) << 24) | // r
++        (parse255(match[2]) << 16) | // g
++        (parse255(match[3]) << 8) | // b
++        255) >>> // a
++      0
++    );
++  }
++  if ((match = rgba.exec(color))) {
++    return (
++      ((parse255(match[1]) << 24) | // r
++        (parse255(match[2]) << 16) | // g
++        (parse255(match[3]) << 8) | // b
++        parse1(match[4])) >>> // a
++      0
++    );
++  }
++  if ((match = hex3.exec(color))) {
++    return (
++      parseInt(
++        match[1] +
++          match[1] + // r
++          match[2] +
++          match[2] + // g
++          match[3] +
++          match[3] + // b
++          "ff",
++        // a
++        16,
++      ) >>> 0
++    );
++  }
++  if ((match = hex8.exec(color))) return parseInt(match[1], 16) >>> 0;
++  if ((match = hex4.exec(color))) {
++    return (
++      parseInt(
++        match[1] +
++          match[1] + // r
++          match[2] +
++          match[2] + // g
++          match[3] +
++          match[3] + // b
++          match[4] +
++          match[4],
++        // a
++        16,
++      ) >>> 0
++    );
++  }
++  if ((match = hsl.exec(color))) {
++    return (
++      (hslToRgb(
++        parse360(match[1]),
++        // h
++        parsePercentage(match[2]),
++        // s
++        parsePercentage(match[3]),
++        // l
++      ) |
++        255) >>> // a
++      0
++    );
++  }
++  if ((match = hsla.exec(color))) {
++    return (
++      (hslToRgb(
++        parse360(match[1]),
++        // h
++        parsePercentage(match[2]),
++        // s
++        parsePercentage(match[3]),
++        // l
++      ) |
++        parse1(match[4])) >>> // a
++      0
++    );
+   }
+   return null;
+ }
+ function hue2rgb(p, q, t) {
+-  if (t < 0)
+-    t += 1;
+-  if (t > 1)
+-    t -= 1;
+-  if (t < 1 / 6)
+-    return p + (q - p) * 6 * t;
+-  if (t < 1 / 2)
+-    return q;
+-  if (t < 2 / 3)
+-    return p + (q - p) * (2 / 3 - t) * 6;
++  if (t < 0) t += 1;
++  if (t > 1) t -= 1;
++  if (t < 1 / 6) return p + (q - p) * 6 * t;
++  if (t < 1 / 2) return q;
++  if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+   return p;
+ }
+ function hslToRgb(h, s, l) {
+@@ -1973,40 +2175,37 @@ function hslToRgb(h, s, l) {
+   const r = hue2rgb(p, q, h + 1 / 3);
+   const g = hue2rgb(p, q, h);
+   const b = hue2rgb(p, q, h - 1 / 3);
+-  return Math.round(r * 255) << 24 | Math.round(g * 255) << 16 | Math.round(b * 255) << 8;
++  return (
++    (Math.round(r * 255) << 24) |
++    (Math.round(g * 255) << 16) |
++    (Math.round(b * 255) << 8)
++  );
+ }
+ function parse255(str) {
+   const int = parseInt(str, 10);
+-  if (int < 0)
+-    return 0;
+-  if (int > 255)
+-    return 255;
++  if (int < 0) return 0;
++  if (int > 255) return 255;
+   return int;
+ }
+ function parse360(str) {
+   const int = parseFloat(str);
+-  return (int % 360 + 360) % 360 / 360;
++  return (((int % 360) + 360) % 360) / 360;
+ }
+ function parse1(str) {
+   const num = parseFloat(str);
+-  if (num < 0)
+-    return 0;
+-  if (num > 1)
+-    return 255;
++  if (num < 0) return 0;
++  if (num > 1) return 255;
+   return Math.round(num * 255);
+ }
+ function parsePercentage(str) {
+   const int = parseFloat(str);
+-  if (int < 0)
+-    return 0;
+-  if (int > 100)
+-    return 1;
++  if (int < 0) return 0;
++  if (int > 100) return 1;
+   return int / 100;
+ }
+ function colorToRgba(input) {
+   let int32Color = normalizeColor(input);
+-  if (int32Color === null)
+-    return input;
++  if (int32Color === null) return input;
+   int32Color = int32Color || 0;
+   const r = (int32Color & 4278190080) >>> 24;
+   const g = (int32Color & 16711680) >>> 16;
+@@ -2022,7 +2221,7 @@ var createInterpolator = (range, output, extrapolate) => {
+     return createInterpolator({
+       range,
+       output,
+-      extrapolate
++      extrapolate,
+     });
+   }
+   if (is.str(range.output[0])) {
+@@ -2031,8 +2230,10 @@ var createInterpolator = (range, output, extrapolate) => {
+   const config2 = range;
+   const outputRange = config2.output;
+   const inputRange = config2.range || [0, 1];
+-  const extrapolateLeft = config2.extrapolateLeft || config2.extrapolate || "extend";
+-  const extrapolateRight = config2.extrapolateRight || config2.extrapolate || "extend";
++  const extrapolateLeft =
++    config2.extrapolateLeft || config2.extrapolate || "extend";
++  const extrapolateRight =
++    config2.extrapolateRight || config2.extrapolate || "extend";
+   const easing = config2.easing || ((t) => t);
+   return (input) => {
+     const range2 = findRange(input, inputRange);
+@@ -2045,60 +2246,63 @@ var createInterpolator = (range, output, extrapolate) => {
+       easing,
+       extrapolateLeft,
+       extrapolateRight,
+-      config2.map
++      config2.map,
+     );
+   };
+ };
+-function interpolate(input, inputMin, inputMax, outputMin, outputMax, easing, extrapolateLeft, extrapolateRight, map) {
++function interpolate(
++  input,
++  inputMin,
++  inputMax,
++  outputMin,
++  outputMax,
++  easing,
++  extrapolateLeft,
++  extrapolateRight,
++  map,
++) {
+   let result = map ? map(input) : input;
+   if (result < inputMin) {
+-    if (extrapolateLeft === "identity")
+-      return result;
+-    else if (extrapolateLeft === "clamp")
+-      result = inputMin;
++    if (extrapolateLeft === "identity") return result;
++    else if (extrapolateLeft === "clamp") result = inputMin;
+   }
+   if (result > inputMax) {
+-    if (extrapolateRight === "identity")
+-      return result;
+-    else if (extrapolateRight === "clamp")
+-      result = inputMax;
+-  }
+-  if (outputMin === outputMax)
+-    return outputMin;
+-  if (inputMin === inputMax)
+-    return input <= inputMin ? outputMin : outputMax;
+-  if (inputMin === -Infinity)
+-    result = -result;
+-  else if (inputMax === Infinity)
+-    result = result - inputMin;
+-  else
+-    result = (result - inputMin) / (inputMax - inputMin);
++    if (extrapolateRight === "identity") return result;
++    else if (extrapolateRight === "clamp") result = inputMax;
++  }
++  if (outputMin === outputMax) return outputMin;
++  if (inputMin === inputMax) return input <= inputMin ? outputMin : outputMax;
++  if (inputMin === -Infinity) result = -result;
++  else if (inputMax === Infinity) result = result - inputMin;
++  else result = (result - inputMin) / (inputMax - inputMin);
+   result = easing(result);
+-  if (outputMin === -Infinity)
+-    result = -result;
+-  else if (outputMax === Infinity)
+-    result = result + outputMin;
+-  else
+-    result = result * (outputMax - outputMin) + outputMin;
++  if (outputMin === -Infinity) result = -result;
++  else if (outputMax === Infinity) result = result + outputMin;
++  else result = result * (outputMax - outputMin) + outputMin;
+   return result;
+ }
+ function findRange(input, inputRange) {
+   for (var i = 1; i < inputRange.length - 1; ++i)
+-    if (inputRange[i] >= input)
+-      break;
++    if (inputRange[i] >= input) break;
+   return i - 1;
+ }
+-var steps = (steps2, direction = "end") => (progress2) => {
+-  progress2 = direction === "end" ? Math.min(progress2, 0.999) : Math.max(progress2, 1e-3);
+-  const expanded = progress2 * steps2;
+-  const rounded = direction === "end" ? Math.floor(expanded) : Math.ceil(expanded);
+-  return clamp(0, 1, rounded / steps2);
+-};
++var steps =
++  (steps2, direction = "end") =>
++  (progress2) => {
++    progress2 =
++      direction === "end"
++        ? Math.min(progress2, 0.999)
++        : Math.max(progress2, 1e-3);
++    const expanded = progress2 * steps2;
++    const rounded =
++      direction === "end" ? Math.floor(expanded) : Math.ceil(expanded);
++    return clamp(0, 1, rounded / steps2);
++  };
+ var c1 = 1.70158;
+ var c2 = c1 * 1.525;
+ var c3 = c1 + 1;
+-var c4 = 2 * Math.PI / 3;
+-var c5 = 2 * Math.PI / 4.5;
++var c4 = (2 * Math.PI) / 3;
++var c5 = (2 * Math.PI) / 4.5;
+ var bounceOut = (x) => {
+   const n1 = 7.5625;
+   const d1 = 2.75;
+@@ -2116,40 +2320,75 @@ var easings = {
+   linear: (x) => x,
+   easeInQuad: (x) => x * x,
+   easeOutQuad: (x) => 1 - (1 - x) * (1 - x),
+-  easeInOutQuad: (x) => x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2,
++  easeInOutQuad: (x) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2),
+   easeInCubic: (x) => x * x * x,
+   easeOutCubic: (x) => 1 - Math.pow(1 - x, 3),
+-  easeInOutCubic: (x) => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2,
++  easeInOutCubic: (x) =>
++    x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2,
+   easeInQuart: (x) => x * x * x * x,
+   easeOutQuart: (x) => 1 - Math.pow(1 - x, 4),
+-  easeInOutQuart: (x) => x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2,
++  easeInOutQuart: (x) =>
++    x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2,
+   easeInQuint: (x) => x * x * x * x * x,
+   easeOutQuint: (x) => 1 - Math.pow(1 - x, 5),
+-  easeInOutQuint: (x) => x < 0.5 ? 16 * x * x * x * x * x : 1 - Math.pow(-2 * x + 2, 5) / 2,
+-  easeInSine: (x) => 1 - Math.cos(x * Math.PI / 2),
+-  easeOutSine: (x) => Math.sin(x * Math.PI / 2),
++  easeInOutQuint: (x) =>
++    x < 0.5 ? 16 * x * x * x * x * x : 1 - Math.pow(-2 * x + 2, 5) / 2,
++  easeInSine: (x) => 1 - Math.cos((x * Math.PI) / 2),
++  easeOutSine: (x) => Math.sin((x * Math.PI) / 2),
+   easeInOutSine: (x) => -(Math.cos(Math.PI * x) - 1) / 2,
+-  easeInExpo: (x) => x === 0 ? 0 : Math.pow(2, 10 * x - 10),
+-  easeOutExpo: (x) => x === 1 ? 1 : 1 - Math.pow(2, -10 * x),
+-  easeInOutExpo: (x) => x === 0 ? 0 : x === 1 ? 1 : x < 0.5 ? Math.pow(2, 20 * x - 10) / 2 : (2 - Math.pow(2, -20 * x + 10)) / 2,
++  easeInExpo: (x) => (x === 0 ? 0 : Math.pow(2, 10 * x - 10)),
++  easeOutExpo: (x) => (x === 1 ? 1 : 1 - Math.pow(2, -10 * x)),
++  easeInOutExpo: (x) =>
++    x === 0
++      ? 0
++      : x === 1
++        ? 1
++        : x < 0.5
++          ? Math.pow(2, 20 * x - 10) / 2
++          : (2 - Math.pow(2, -20 * x + 10)) / 2,
+   easeInCirc: (x) => 1 - Math.sqrt(1 - Math.pow(x, 2)),
+   easeOutCirc: (x) => Math.sqrt(1 - Math.pow(x - 1, 2)),
+-  easeInOutCirc: (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2,
++  easeInOutCirc: (x) =>
++    x < 0.5
++      ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2
++      : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2,
+   easeInBack: (x) => c3 * x * x * x - c1 * x * x,
+   easeOutBack: (x) => 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2),
+-  easeInOutBack: (x) => x < 0.5 ? Math.pow(2 * x, 2) * ((c2 + 1) * 2 * x - c2) / 2 : (Math.pow(2 * x - 2, 2) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2,
+-  easeInElastic: (x) => x === 0 ? 0 : x === 1 ? 1 : -Math.pow(2, 10 * x - 10) * Math.sin((x * 10 - 10.75) * c4),
+-  easeOutElastic: (x) => x === 0 ? 0 : x === 1 ? 1 : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c4) + 1,
+-  easeInOutElastic: (x) => x === 0 ? 0 : x === 1 ? 1 : x < 0.5 ? -(Math.pow(2, 20 * x - 10) * Math.sin((20 * x - 11.125) * c5)) / 2 : Math.pow(2, -20 * x + 10) * Math.sin((20 * x - 11.125) * c5) / 2 + 1,
++  easeInOutBack: (x) =>
++    x < 0.5
++      ? (Math.pow(2 * x, 2) * ((c2 + 1) * 2 * x - c2)) / 2
++      : (Math.pow(2 * x - 2, 2) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2,
++  easeInElastic: (x) =>
++    x === 0
++      ? 0
++      : x === 1
++        ? 1
++        : -Math.pow(2, 10 * x - 10) * Math.sin((x * 10 - 10.75) * c4),
++  easeOutElastic: (x) =>
++    x === 0
++      ? 0
++      : x === 1
++        ? 1
++        : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c4) + 1,
++  easeInOutElastic: (x) =>
++    x === 0
++      ? 0
++      : x === 1
++        ? 1
++        : x < 0.5
++          ? -(Math.pow(2, 20 * x - 10) * Math.sin((20 * x - 11.125) * c5)) / 2
++          : (Math.pow(2, -20 * x + 10) * Math.sin((20 * x - 11.125) * c5)) / 2 +
++            1,
+   easeInBounce: (x) => 1 - bounceOut(1 - x),
+   easeOutBounce: bounceOut,
+-  easeInOutBounce: (x) => x < 0.5 ? (1 - bounceOut(1 - 2 * x)) / 2 : (1 + bounceOut(2 * x - 1)) / 2,
+-  steps
++  easeInOutBounce: (x) =>
++    x < 0.5 ? (1 - bounceOut(1 - 2 * x)) / 2 : (1 + bounceOut(2 * x - 1)) / 2,
++  steps,
+ };
+ var $get = Symbol.for("FluidValue.get");
+ var $observers = Symbol.for("FluidValue.observers");
+ var hasFluidValue = (arg) => Boolean(arg && arg[$get]);
+-var getFluidValue = (arg) => arg && arg[$get] ? arg[$get]() : arg;
++var getFluidValue = (arg) => (arg && arg[$get] ? arg[$get]() : arg);
+ var getFluidObservers = (target) => target[$observers] || null;
+ function callFluidObserver(observer2, event) {
+   if (observer2.eventObserved) {
+@@ -2179,7 +2418,7 @@ function addFluidObserver(target, observer2) {
+   if (target[$get]) {
+     let observers = target[$observers];
+     if (!observers) {
+-      setHidden(target, $observers, observers = /* @__PURE__ */ new Set());
++      setHidden(target, $observers, (observers = /* @__PURE__ */ new Set()));
+     }
+     if (!observers.has(observer2)) {
+       observers.add(observer2);
+@@ -2204,13 +2443,15 @@ function removeFluidObserver(target, observer2) {
+     }
+   }
+ }
+-var setHidden = (target, key, value) => Object.defineProperty(target, key, {
+-  value,
+-  writable: true,
+-  configurable: true
+-});
++var setHidden = (target, key, value) =>
++  Object.defineProperty(target, key, {
++    value,
++    writable: true,
++    configurable: true,
++  });
+ var numberRegex = /[+\-]?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?/g;
+-var colorRegex = /(#(?:[0-9a-f]{2}){2,4}|(#[0-9a-f]{3})|(rgb|hsl)a?\((-?\d+%?[,\s]+){2,3}\s*[\d\.]+%?\))/gi;
++var colorRegex =
++  /(#(?:[0-9a-f]{2}){2,4}|(#[0-9a-f]{3})|(rgb|hsl)a?\((-?\d+%?[,\s]+){2,3}\s*[\d\.]+%?\))/gi;
+ var unitRegex = new RegExp(`(${numberRegex.source})(%|[a-z]+)`, "i");
+ var rgbaRegex = /rgba\(([0-9\.-]+), ([0-9\.-]+), ([0-9\.-]+), ([0-9\.-]+)\)/gi;
+ var cssVariableRegex = /var\((--[a-zA-Z0-9-_]+),? ?([a-zA-Z0-9 ()%#.,-]+)?\)/;
+@@ -2219,11 +2460,15 @@ var variableToRgba = (input) => {
+   if (!token || isSSR()) {
+     return input;
+   }
+-  const value = window.getComputedStyle(document.documentElement).getPropertyValue(token);
++  const value = window
++    .getComputedStyle(document.documentElement)
++    .getPropertyValue(token);
+   if (value) {
+     return value.trim();
+   } else if (fallback && fallback.startsWith("--")) {
+-    const value2 = window.getComputedStyle(document.documentElement).getPropertyValue(fallback);
++    const value2 = window
++      .getComputedStyle(document.documentElement)
++      .getPropertyValue(fallback);
+     if (value2) {
+       return value2;
+     } else {
+@@ -2238,44 +2483,49 @@ var variableToRgba = (input) => {
+ };
+ var parseCSSVariable = (current) => {
+   const match = cssVariableRegex.exec(current);
+-  if (!match)
+-    return [,];
++  if (!match) return [,];
+   const [, token, fallback] = match;
+   return [token, fallback];
+ };
+ var namedColorRegex;
+-var rgbaRound = (_, p1, p2, p3, p4) => `rgba(${Math.round(p1)}, ${Math.round(p2)}, ${Math.round(p3)}, ${p4})`;
++var rgbaRound = (_, p1, p2, p3, p4) =>
++  `rgba(${Math.round(p1)}, ${Math.round(p2)}, ${Math.round(p3)}, ${p4})`;
+ var createStringInterpolator2 = (config2) => {
+   if (!namedColorRegex)
+-    namedColorRegex = colors ? (
+-      // match color names, ignore partial matches
+-      new RegExp(`(${Object.keys(colors).join("|")})(?!\\w)`, "g")
+-    ) : (
+-      // never match
+-      /^\b$/
+-    );
++    namedColorRegex = colors
++      ? // match color names, ignore partial matches
++        new RegExp(`(${Object.keys(colors).join("|")})(?!\\w)`, "g")
++      : // never match
++        /^\b$/;
+   const output = config2.output.map((value) => {
+-    return getFluidValue(value).replace(cssVariableRegex, variableToRgba).replace(colorRegex, colorToRgba).replace(namedColorRegex, colorToRgba);
++    return getFluidValue(value)
++      .replace(cssVariableRegex, variableToRgba)
++      .replace(colorRegex, colorToRgba)
++      .replace(namedColorRegex, colorToRgba);
+   });
+   const keyframes = output.map((value) => value.match(numberRegex).map(Number));
+-  const outputRanges = keyframes[0].map(
+-    (_, i) => keyframes.map((values) => {
++  const outputRanges = keyframes[0].map((_, i) =>
++    keyframes.map((values) => {
+       if (!(i in values)) {
+         throw Error('The arity of each "output" value must be equal');
+       }
+       return values[i];
+-    })
++    }),
+   );
+-  const interpolators = outputRanges.map(
+-    (output2) => createInterpolator({ ...config2, output: output2 })
++  const interpolators = outputRanges.map((output2) =>
++    createInterpolator({ ...config2, output: output2 }),
+   );
+   return (input) => {
+-    const missingUnit = !unitRegex.test(output[0]) && output.find((value) => unitRegex.test(value))?.replace(numberRegex, "");
++    const missingUnit =
++      !unitRegex.test(output[0]) &&
++      output.find((value) => unitRegex.test(value))?.replace(numberRegex, "");
+     let i = 0;
+-    return output[0].replace(
+-      numberRegex,
+-      () => `${interpolators[i++](input)}${missingUnit || ""}`
+-    ).replace(rgbaRegex, rgbaRound);
++    return output[0]
++      .replace(
++        numberRegex,
++        () => `${interpolators[i++](input)}${missingUnit || ""}`,
++      )
++      .replace(rgbaRegex, rgbaRound);
+   };
+ };
+ var prefix = "react-spring: ";
+@@ -2295,18 +2545,23 @@ var once = (fn) => {
+ var warnInterpolate = once(console.warn);
+ function deprecateInterpolate() {
+   warnInterpolate(
+-    `${prefix}The "interpolate" function is deprecated in v9 (use "to" instead)`
++    `${prefix}The "interpolate" function is deprecated in v9 (use "to" instead)`,
+   );
+ }
+ var warnDirectCall = once(console.warn);
+ function deprecateDirectCall() {
+   warnDirectCall(
+-    `${prefix}Directly calling start instead of using the api object is deprecated in v9 (use ".start" instead), this will be removed in later 0.X.0 versions`
++    `${prefix}Directly calling start instead of using the api object is deprecated in v9 (use ".start" instead), this will be removed in later 0.X.0 versions`,
+   );
+ }
+ function isAnimatedString(value) {
+-  return is.str(value) && (value[0] == "#" || /\d/.test(value) || // Do not identify a CSS variable as an AnimatedString if its SSR
+-  !isSSR() && cssVariableRegex.test(value) || value in (colors || {}));
++  return (
++    is.str(value) &&
++    (value[0] == "#" ||
++      /\d/.test(value) || // Do not identify a CSS variable as an AnimatedString if its SSR
++      (!isSSR() && cssVariableRegex.test(value)) ||
++      value in (colors || {}))
++  );
+ }
+ var useIsomorphicLayoutEffect = isSSR() ? useEffect5 : useLayoutEffect2;
+ var useIsMounted = () => {
+@@ -2329,23 +2584,21 @@ function useForceUpdate() {
+   };
+ }
+ function useMemoOne(getResult, inputs) {
+-  const [initial] = useState22(
+-    () => ({
+-      inputs,
+-      result: getResult()
+-    })
+-  );
++  const [initial] = useState22(() => ({
++    inputs,
++    result: getResult(),
++  }));
+   const committed = useRef32();
+   const prevCache = committed.current;
+   let cache = prevCache;
+   if (cache) {
+     const useCache = Boolean(
+-      inputs && cache.inputs && areInputsEqual(inputs, cache.inputs)
++      inputs && cache.inputs && areInputsEqual(inputs, cache.inputs),
+     );
+     if (!useCache) {
+       cache = {
+         inputs,
+-        result: getResult()
++        result: getResult(),
+       };
+     }
+   } else {
+@@ -2381,11 +2634,20 @@ function usePrev(value) {
+ }
+ 
+ // ../../node_modules/.pnpm/@react-spring+core@9.7.3_react@18.2.0/node_modules/@react-spring/core/dist/react-spring_core.modern.mjs
+-import { useContext as useContext2, useMemo as useMemo3, useRef as useRef6 } from "react";
++import {
++  useContext as useContext2,
++  useMemo as useMemo3,
++  useRef as useRef6,
++} from "react";
+ 
+ // ../../node_modules/.pnpm/@react-spring+animated@9.7.3_react@18.2.0/node_modules/@react-spring/animated/dist/react-spring_animated.modern.mjs
+ import * as React2 from "react";
+-import { forwardRef, useRef as useRef5, useCallback as useCallback5, useEffect as useEffect6 } from "react";
++import {
++  forwardRef,
++  useRef as useRef5,
++  useCallback as useCallback5,
++  useEffect as useEffect6,
++} from "react";
+ var $node = Symbol.for("Animated:node");
+ var isAnimated = (value) => !!value && value[$node] === value;
+ var getAnimated = (owner) => owner && owner[$node];
+@@ -2443,8 +2705,7 @@ var AnimatedValue = class extends Animated {
+       this.elapsedTime = 0;
+       this.durationProgress = 0;
+       this.lastPosition = this._value;
+-      if (done)
+-        this.lastVelocity = null;
++      if (done) this.lastVelocity = null;
+       this.v0 = null;
+     }
+   }
+@@ -2454,7 +2715,7 @@ var AnimatedString = class extends AnimatedValue {
+     super(0);
+     this._string = null;
+     this._toString = createInterpolator({
+-      output: [value, value]
++      output: [value, value],
+     });
+   }
+   /** @internal */
+@@ -2463,7 +2724,7 @@ var AnimatedString = class extends AnimatedValue {
+   }
+   getValue() {
+     const value = this._string;
+-    return value == null ? this._string = this._toString(this._value) : value;
++    return value == null ? (this._string = this._toString(this._value)) : value;
+   }
+   setValue(value) {
+     if (is.str(value)) {
+@@ -2482,7 +2743,7 @@ var AnimatedString = class extends AnimatedValue {
+   reset(goal) {
+     if (goal) {
+       this._toString = createInterpolator({
+-        output: [this.getValue(), goal]
++        output: [this.getValue(), goal],
+       });
+     }
+     this._value = 0;
+@@ -2564,23 +2825,30 @@ function makeAnimated(value) {
+ }
+ function getAnimatedType(value) {
+   const parentNode = getAnimated(value);
+-  return parentNode ? parentNode.constructor : is.arr(value) ? AnimatedArray : isAnimatedString(value) ? AnimatedString : AnimatedValue;
++  return parentNode
++    ? parentNode.constructor
++    : is.arr(value)
++      ? AnimatedArray
++      : isAnimatedString(value)
++        ? AnimatedString
++        : AnimatedValue;
+ }
+ var withAnimated = (Component, host2) => {
+-  const hasInstance = (
++  const hasInstance =
+     // Function components must use "forwardRef" to avoid being
+     // re-rendered on every animation frame.
+-    !is.fun(Component) || Component.prototype && Component.prototype.isReactComponent
+-  );
++    !is.fun(Component) ||
++    (Component.prototype && Component.prototype.isReactComponent);
+   return forwardRef((givenProps, givenRef) => {
+     const instanceRef = useRef5(null);
+-    const ref = hasInstance && // eslint-disable-next-line react-hooks/rules-of-hooks
+-    useCallback5(
+-      (value) => {
+-        instanceRef.current = updateRef(givenRef, value);
+-      },
+-      [givenRef]
+-    );
++    const ref =
++      hasInstance && // eslint-disable-next-line react-hooks/rules-of-hooks
++      useCallback5(
++        (value) => {
++          instanceRef.current = updateRef(givenRef, value);
++        },
++        [givenRef],
++      );
+     const [props, deps] = getAnimatedState(givenProps, host2);
+     const forceUpdate = useForceUpdate();
+     const callback = () => {
+@@ -2588,7 +2856,9 @@ var withAnimated = (Component, host2) => {
+       if (hasInstance && !instance) {
+         return;
+       }
+-      const didUpdate = instance ? host2.applyAnimatedValues(instance, props.getValue(true)) : false;
++      const didUpdate = instance
++        ? host2.applyAnimatedValues(instance, props.getValue(true))
++        : false;
+       if (didUpdate === false) {
+         forceUpdate();
+       }
+@@ -2600,9 +2870,8 @@ var withAnimated = (Component, host2) => {
+       each(deps, (dep) => addFluidObserver(dep, observer));
+       return () => {
+         if (observerRef.current) {
+-          each(
+-            observerRef.current.deps,
+-            (dep) => removeFluidObserver(dep, observerRef.current)
++          each(observerRef.current.deps, (dep) =>
++            removeFluidObserver(dep, observerRef.current),
+           );
+           raf.cancel(observerRef.current.update);
+         }
+@@ -2614,7 +2883,10 @@ var withAnimated = (Component, host2) => {
+       each(observer2.deps, (dep) => removeFluidObserver(dep, observer2));
+     });
+     const usedProps = host2.getComponentProps(props.getValue());
+-    return /* @__PURE__ */ React2.createElement(Component, { ...usedProps, ref });
++    return /* @__PURE__ */ React2.createElement(Component, {
++      ...usedProps,
++      ref,
++    });
+   });
+ };
+ var PropsObserver = class {
+@@ -2634,7 +2906,7 @@ function getAnimatedState(props, host2) {
+   if (props.style)
+     props = {
+       ...props,
+-      style: host2.createAnimatedStyle(props.style)
++      style: host2.createAnimatedStyle(props.style),
+     };
+   props = new AnimatedObject(props);
+   TreeContext.dependencies = null;
+@@ -2642,30 +2914,35 @@ function getAnimatedState(props, host2) {
+ }
+ function updateRef(ref, value) {
+   if (ref) {
+-    if (is.fun(ref))
+-      ref(value);
+-    else
+-      ref.current = value;
++    if (is.fun(ref)) ref(value);
++    else ref.current = value;
+   }
+   return value;
+ }
+ var cacheKey = Symbol.for("AnimatedComponent");
+-var createHost = (components, {
+-  applyAnimatedValues: applyAnimatedValues2 = () => false,
+-  createAnimatedStyle = (style) => new AnimatedObject(style),
+-  getComponentProps = (props) => props
+-} = {}) => {
++var createHost = (
++  components,
++  {
++    applyAnimatedValues: applyAnimatedValues2 = () => false,
++    createAnimatedStyle = (style) => new AnimatedObject(style),
++    getComponentProps = (props) => props,
++  } = {},
++) => {
+   const hostConfig = {
+     applyAnimatedValues: applyAnimatedValues2,
+     createAnimatedStyle,
+-    getComponentProps
++    getComponentProps,
+   };
+   const animated2 = (Component) => {
+     const displayName = getDisplayName(Component) || "Anonymous";
+     if (is.str(Component)) {
+-      Component = animated2[Component] || (animated2[Component] = withAnimated(Component, hostConfig));
++      Component =
++        animated2[Component] ||
++        (animated2[Component] = withAnimated(Component, hostConfig));
+     } else {
+-      Component = Component[cacheKey] || (Component[cacheKey] = withAnimated(Component, hostConfig));
++      Component =
++        Component[cacheKey] ||
++        (Component[cacheKey] = withAnimated(Component, hostConfig));
+     }
+     Component.displayName = `Animated(${displayName})`;
+     return Component;
+@@ -2677,24 +2954,44 @@ var createHost = (components, {
+     animated2[key] = animated2(Component);
+   });
+   return {
+-    animated: animated2
++    animated: animated2,
+   };
+ };
+-var getDisplayName = (arg) => is.str(arg) ? arg : arg && is.str(arg.displayName) ? arg.displayName : is.fun(arg) && arg.name || null;
++var getDisplayName = (arg) =>
++  is.str(arg)
++    ? arg
++    : arg && is.str(arg.displayName)
++      ? arg.displayName
++      : (is.fun(arg) && arg.name) || null;
+ 
+ // ../../node_modules/.pnpm/@react-spring+core@9.7.3_react@18.2.0/node_modules/@react-spring/core/dist/react-spring_core.modern.mjs
+ import * as React3 from "react";
+ import { useContext } from "react";
+ import { useState as useState5 } from "react";
+ import * as React22 from "react";
+-import { useContext as useContext3, useRef as useRef23, useMemo as useMemo22 } from "react";
++import {
++  useContext as useContext3,
++  useRef as useRef23,
++  useMemo as useMemo22,
++} from "react";
+ import { useRef as useRef33, useState as useState23 } from "react";
+ function callProp(value, ...args) {
+   return is.fun(value) ? value(...args) : value;
+ }
+-var matchProp = (value, key) => value === true || !!(key && value && (is.fun(value) ? value(key) : toArray(value).includes(key)));
+-var resolveProp = (prop, key) => is.obj(prop) ? key && prop[key] : prop;
+-var getDefaultProp = (props, key) => props.default === true ? props[key] : props.default ? props.default[key] : void 0;
++var matchProp = (value, key) =>
++  value === true ||
++  !!(
++    key &&
++    value &&
++    (is.fun(value) ? value(key) : toArray(value).includes(key))
++  );
++var resolveProp = (prop, key) => (is.obj(prop) ? key && prop[key] : prop);
++var getDefaultProp = (props, key) =>
++  props.default === true
++    ? props[key]
++    : props.default
++      ? props.default[key]
++      : void 0;
+ var noopTransform = (value) => value;
+ var getDefaultProps = (props, transform = noopTransform) => {
+   let keys = DEFAULT_PROPS;
+@@ -2718,7 +3015,7 @@ var DEFAULT_PROPS = [
+   "onChange",
+   "onPause",
+   "onResume",
+-  "onRest"
++  "onRest",
+ ];
+ var RESERVED_PROPS = {
+   config: 1,
+@@ -2754,7 +3051,7 @@ var RESERVED_PROPS = {
+   // Internal props
+   keys: 1,
+   callId: 1,
+-  parentId: 1
++  parentId: 1,
+ };
+ function getForwardProps(props) {
+   const forward = {};
+@@ -2780,18 +3077,21 @@ function inferTo(props) {
+ }
+ function computeGoal(value) {
+   value = getFluidValue(value);
+-  return is.arr(value) ? value.map(computeGoal) : isAnimatedString(value) ? globals_exports.createStringInterpolator({
+-    range: [0, 1],
+-    output: [value, value]
+-  })(1) : value;
++  return is.arr(value)
++    ? value.map(computeGoal)
++    : isAnimatedString(value)
++      ? globals_exports.createStringInterpolator({
++          range: [0, 1],
++          output: [value, value],
++        })(1)
++      : value;
+ }
+ function hasProps(props) {
+-  for (const _ in props)
+-    return true;
++  for (const _ in props) return true;
+   return false;
+ }
+ function isAsyncTo(to2) {
+-  return is.fun(to2) || is.arr(to2) && is.obj(to2[0]);
++  return is.fun(to2) || (is.arr(to2) && is.obj(to2[0]));
+ }
+ function detachRefs(ctrl, ref) {
+   ctrl.ref?.delete(ctrl);
+@@ -2810,14 +3110,14 @@ var config = {
+   wobbly: { tension: 180, friction: 12 },
+   stiff: { tension: 210, friction: 20 },
+   slow: { tension: 280, friction: 60 },
+-  molasses: { tension: 280, friction: 120 }
++  molasses: { tension: 280, friction: 120 },
+ };
+ var defaults = {
+   ...config.default,
+   mass: 1,
+   damping: 1,
+   easing: easings.linear,
+-  clamp: false
++  clamp: false,
+ };
+ var AnimationConfig = class {
+   constructor() {
+@@ -2841,12 +3141,10 @@ function mergeConfig(config2, newConfig, defaultConfig) {
+   let { frequency, damping } = config2;
+   const { mass } = config2;
+   if (!is.und(frequency)) {
+-    if (frequency < 0.01)
+-      frequency = 0.01;
+-    if (damping < 0)
+-      damping = 0;
+-    config2.tension = Math.pow(2 * Math.PI / frequency, 2) * mass;
+-    config2.friction = 4 * Math.PI * damping * mass / frequency;
++    if (frequency < 0.01) frequency = 0.01;
++    if (damping < 0) damping = 0;
++    config2.tension = Math.pow((2 * Math.PI) / frequency, 2) * mass;
++    config2.friction = (4 * Math.PI * damping * mass) / frequency;
+   }
+   return config2;
+ }
+@@ -2855,7 +3153,12 @@ function sanitizeConfig(config2, props) {
+     config2.duration = void 0;
+   } else {
+     const isTensionConfig = !is.und(props.tension) || !is.und(props.friction);
+-    if (isTensionConfig || !is.und(props.frequency) || !is.und(props.damping) || !is.und(props.mass)) {
++    if (
++      isTensionConfig ||
++      !is.und(props.frequency) ||
++      !is.und(props.damping) ||
++      !is.und(props.mass)
++    ) {
+       config2.duration = void 0;
+       config2.decay = void 0;
+     }
+@@ -2875,7 +3178,10 @@ var Animation = class {
+     this.immediate = false;
+   }
+ };
+-function scheduleProps(callId, { key, props, defaultProps: defaultProps2, state, actions }) {
++function scheduleProps(
++  callId,
++  { key, props, defaultProps: defaultProps2, state, actions },
++) {
+   return new Promise((resolve, reject) => {
+     let delay;
+     let timeout;
+@@ -2932,25 +3238,32 @@ function scheduleProps(callId, { key, props, defaultProps: defaultProps2, state,
+     }
+   });
+ }
+-var getCombinedResult = (target, results) => results.length == 1 ? results[0] : results.some((result) => result.cancelled) ? getCancelledResult(target.get()) : results.every((result) => result.noop) ? getNoopResult(target.get()) : getFinishedResult(
+-  target.get(),
+-  results.every((result) => result.finished)
+-);
++var getCombinedResult = (target, results) =>
++  results.length == 1
++    ? results[0]
++    : results.some((result) => result.cancelled)
++      ? getCancelledResult(target.get())
++      : results.every((result) => result.noop)
++        ? getNoopResult(target.get())
++        : getFinishedResult(
++            target.get(),
++            results.every((result) => result.finished),
++          );
+ var getNoopResult = (value) => ({
+   value,
+   noop: true,
+   finished: true,
+-  cancelled: false
++  cancelled: false,
+ });
+ var getFinishedResult = (value, finished, cancelled = false) => ({
+   value,
+   finished,
+-  cancelled
++  cancelled,
+ });
+ var getCancelledResult = (value) => ({
+   value,
+   cancelled: true,
+-  finished: false
++  finished: false,
+ });
+ function runAsync(to2, props, state, target) {
+   const { callId, parentId, onRest } = props;
+@@ -2958,27 +3271,23 @@ function runAsync(to2, props, state, target) {
+   if (!parentId && to2 === prevTo && !props.reset) {
+     return prevPromise;
+   }
+-  return state.promise = (async () => {
++  return (state.promise = (async () => {
+     state.asyncId = callId;
+     state.asyncTo = to2;
+-    const defaultProps2 = getDefaultProps(
+-      props,
+-      (value, key) => (
+-        // The `onRest` prop is only called when the `runAsync` promise is resolved.
+-        key === "onRest" ? void 0 : value
+-      )
++    const defaultProps2 = getDefaultProps(props, (value, key) =>
++      // The `onRest` prop is only called when the `runAsync` promise is resolved.
++      key === "onRest" ? void 0 : value,
+     );
+     let preventBail;
+     let bail;
+     const bailPromise = new Promise(
+-      (resolve, reject) => (preventBail = resolve, bail = reject)
++      (resolve, reject) => ((preventBail = resolve), (bail = reject)),
+     );
+     const bailIfEnded = (bailSignal) => {
+-      const bailResult = (
++      const bailResult =
+         // The `cancel` prop or `stop` method was used.
+-        callId <= (state.cancelId || 0) && getCancelledResult(target) || // The async `to` prop was replaced.
+-        callId !== state.asyncId && getFinishedResult(target, false)
+-      );
++        (callId <= (state.cancelId || 0) && getCancelledResult(target)) || // The async `to` prop was replaced.
++        (callId !== state.asyncId && getFinishedResult(target, false));
+       if (bailResult) {
+         bailSignal.result = bailResult;
+         bail(bailSignal);
+@@ -3052,20 +3361,19 @@ function runAsync(to2, props, state, target) {
+       });
+     }
+     return result;
+-  })();
++  })());
+ }
+ function stopAsync(state, cancelId) {
+   flush(state.timeouts, (t) => t.cancel());
+   state.pauseQueue.clear();
+   state.resumeQueue.clear();
+   state.asyncId = state.asyncTo = state.promise = void 0;
+-  if (cancelId)
+-    state.cancelId = cancelId;
++  if (cancelId) state.cancelId = cancelId;
+ }
+ var BailSignal = class extends Error {
+   constructor() {
+     super(
+-      "An async animation has been interrupted. You see this error because you forgot to use `await` or `.catch(...)` on its returned promise."
++      "An async animation has been interrupted. You see this error because you forgot to use `await` or `.catch(...)` on its returned promise.",
+     );
+   }
+ };
+@@ -3109,26 +3417,22 @@ var FrameValue = class extends FluidValue {
+     return this.get();
+   }
+   observerAdded(count) {
+-    if (count == 1)
+-      this._attach();
++    if (count == 1) this._attach();
+   }
+   observerRemoved(count) {
+-    if (count == 0)
+-      this._detach();
++    if (count == 0) this._detach();
+   }
+   /** Called when the first child is added. */
+-  _attach() {
+-  }
++  _attach() {}
+   /** Called when the last child is removed. */
+-  _detach() {
+-  }
++  _detach() {}
+   /** Tell our children about our new value */
+   _onChange(value, idle = false) {
+     callFluidObservers(this, {
+       type: "change",
+       parent: this,
+       value,
+-      idle
++      idle,
+     });
+   }
+   /** Tell our children about our new priority */
+@@ -3139,7 +3443,7 @@ var FrameValue = class extends FluidValue {
+     callFluidObservers(this, {
+       type: "priority",
+       parent: this,
+-      priority: priority2
++      priority: priority2,
+     });
+   }
+ };
+@@ -3150,8 +3454,12 @@ var IS_PAUSED = 4;
+ var hasAnimated = (target) => (target[$P] & HAS_ANIMATED) > 0;
+ var isAnimating = (target) => (target[$P] & IS_ANIMATING) > 0;
+ var isPaused = (target) => (target[$P] & IS_PAUSED) > 0;
+-var setActiveBit = (target, active) => active ? target[$P] |= IS_ANIMATING | HAS_ANIMATED : target[$P] &= ~IS_ANIMATING;
+-var setPausedBit = (target, paused) => paused ? target[$P] |= IS_PAUSED : target[$P] &= ~IS_PAUSED;
++var setActiveBit = (target, active) =>
++  active
++    ? (target[$P] |= IS_ANIMATING | HAS_ANIMATED)
++    : (target[$P] &= ~IS_ANIMATING);
++var setPausedBit = (target, paused) =>
++  paused ? (target[$P] |= IS_PAUSED) : (target[$P] &= ~IS_PAUSED);
+ var SpringValue = class extends FrameValue {
+   constructor(arg1, arg2) {
+     super();
+@@ -3162,7 +3470,7 @@ var SpringValue = class extends FrameValue {
+       delayed: false,
+       pauseQueue: /* @__PURE__ */ new Set(),
+       resumeQueue: /* @__PURE__ */ new Set(),
+-      timeouts: /* @__PURE__ */ new Set()
++      timeouts: /* @__PURE__ */ new Set(),
+     };
+     this._pendingCalls = /* @__PURE__ */ new Set();
+     this._lastCallId = 0;
+@@ -3185,7 +3493,9 @@ var SpringValue = class extends FrameValue {
+   }
+   get velocity() {
+     const node = getAnimated(this);
+-    return node instanceof AnimatedValue ? node.lastVelocity || 0 : node.getPayload().map((node2) => node2.lastVelocity || 0);
++    return node instanceof AnimatedValue
++      ? node.lastVelocity || 0
++      : node.getPayload().map((node2) => node2.lastVelocity || 0);
+   }
+   /**
+    * When true, this value has been animated at least once.
+@@ -3225,12 +3535,14 @@ var SpringValue = class extends FrameValue {
+       toValues = toArray(getFluidValue(anim.to));
+     }
+     anim.values.forEach((node2, i) => {
+-      if (node2.done)
+-        return;
+-      const to2 = (
++      if (node2.done) return;
++      const to2 =
+         // Animated strings always go from 0 to 1.
+-        node2.constructor == AnimatedString ? 1 : payload ? payload[i].lastPosition : toValues[i]
+-      );
++        node2.constructor == AnimatedString
++          ? 1
++          : payload
++            ? payload[i].lastPosition
++            : toValues[i];
+       let finished = anim.immediate;
+       let position = to2;
+       if (!finished) {
+@@ -3239,11 +3551,18 @@ var SpringValue = class extends FrameValue {
+           node2.done = true;
+           return;
+         }
+-        let elapsed = node2.elapsedTime += dt;
++        let elapsed = (node2.elapsedTime += dt);
+         const from = anim.fromValues[i];
+-        const v0 = node2.v0 != null ? node2.v0 : node2.v0 = is.arr(config2.velocity) ? config2.velocity[i] : config2.velocity;
++        const v0 =
++          node2.v0 != null
++            ? node2.v0
++            : (node2.v0 = is.arr(config2.velocity)
++                ? config2.velocity[i]
++                : config2.velocity);
+         let velocity;
+-        const precision = config2.precision || (from == to2 ? 5e-3 : Math.min(1, Math.abs(to2 - from) * 1e-3));
++        const precision =
++          config2.precision ||
++          (from == to2 ? 5e-3 : Math.min(1, Math.abs(to2 - from) * 1e-3));
+         if (!is.und(config2.duration)) {
+           let p = 1;
+           if (config2.duration > 0) {
+@@ -3264,7 +3583,7 @@ var SpringValue = class extends FrameValue {
+         } else if (config2.decay) {
+           const decay = config2.decay === true ? 0.998 : config2.decay;
+           const e = Math.exp(-(1 - decay) * elapsed);
+-          position = from + v0 / (1 - decay) * (1 - e);
++          position = from + (v0 / (1 - decay)) * (1 - e);
+           finished = Math.abs(node2.lastPosition - position) <= precision;
+           velocity = v0 * e;
+         } else {
+@@ -3384,7 +3703,7 @@ var SpringValue = class extends FrameValue {
+       queue.map((props) => {
+         const up = this._update(props);
+         return up;
+-      })
++      }),
+     ).then((results) => getCombinedResult(this, results));
+   }
+   /**
+@@ -3430,8 +3749,7 @@ var SpringValue = class extends FrameValue {
+     }
+     const range = { to: to2, from };
+     if (!hasAnimated(this)) {
+-      if (props.reverse)
+-        [to2, from] = [from, to2];
++      if (props.reverse) [to2, from] = [from, to2];
+       from = getFluidValue(from);
+       if (!is.und(from)) {
+         this._set(from);
+@@ -3447,17 +3765,16 @@ var SpringValue = class extends FrameValue {
+     if (props.default)
+       Object.assign(
+         defaultProps2,
+-        getDefaultProps(
+-          props,
+-          (value, prop) => /^on/.test(prop) ? resolveProp(value, key) : value
+-        )
++        getDefaultProps(props, (value, prop) =>
++          /^on/.test(prop) ? resolveProp(value, key) : value,
++        ),
+       );
+     mergeActiveFn(this, props, "onProps");
+     sendEvent(this, "onProps", props, this);
+     const range = this._prepareNode(props);
+     if (Object.isFrozen(this)) {
+       throw Error(
+-        "Cannot animate a `SpringValue` object that is frozen. Did you forget to pass your component to `animated(...)` before animating its props?"
++        "Cannot animate a `SpringValue` object that is frozen. Did you forget to pass your component to `animated(...)` before animating its props?",
+       );
+     }
+     const state = this._state;
+@@ -3475,7 +3792,7 @@ var SpringValue = class extends FrameValue {
+               this,
+               "onPause",
+               getFinishedResult(this, checkFinished(this, this.animation.to)),
+-              this
++              this,
+             );
+           }
+         },
+@@ -3490,12 +3807,12 @@ var SpringValue = class extends FrameValue {
+               this,
+               "onResume",
+               getFinishedResult(this, checkFinished(this, this.animation.to)),
+-              this
++              this,
+             );
+           }
+         },
+-        start: this._merge.bind(this, range)
+-      }
++        start: this._merge.bind(this, range),
++      },
+     }).then((result) => {
+       if (props.loop && result.finished && !(isLoop && result.noop)) {
+         const nextProps = createLoopUpdate(props);
+@@ -3527,8 +3844,7 @@ var SpringValue = class extends FrameValue {
+     if (hasFromProp && !hasToProp && (!props.default || is.und(to2))) {
+       to2 = from;
+     }
+-    if (props.reverse)
+-      [to2, from] = [from, to2];
++    if (props.reverse) [to2, from] = [from, to2];
+     const hasFromChanged = !isEqual(from, prevFrom);
+     if (hasFromChanged) {
+       anim.from = from;
+@@ -3549,23 +3865,29 @@ var SpringValue = class extends FrameValue {
+         config2,
+         callProp(props.config, key),
+         // Avoid calling the same "config" prop twice.
+-        props.config !== defaultProps2.config ? callProp(defaultProps2.config, key) : void 0
++        props.config !== defaultProps2.config
++          ? callProp(defaultProps2.config, key)
++          : void 0,
+       );
+     }
+     let node = getAnimated(this);
+     if (!node || is.und(to2)) {
+       return resolve(getFinishedResult(this, true));
+     }
+-    const reset = (
++    const reset =
+       // When `reset` is undefined, the `from` prop implies `reset: true`,
+       // except for declarative updates. When `reset` is defined, there
+       // must exist a value to animate from.
+-      is.und(props.reset) ? hasFromProp && !props.default : !is.und(from) && matchProp(props.reset, key)
+-    );
++      is.und(props.reset)
++        ? hasFromProp && !props.default
++        : !is.und(from) && matchProp(props.reset, key);
+     const value = reset ? from : this.get();
+     const goal = computeGoal(to2);
+     const isAnimatable = is.num(goal) || is.arr(goal) || isAnimatedString(goal);
+-    const immediate = !hasAsyncTo && (!isAnimatable || matchProp(defaultProps2.immediate || props.immediate, key));
++    const immediate =
++      !hasAsyncTo &&
++      (!isAnimatable ||
++        matchProp(defaultProps2.immediate || props.immediate, key));
+     if (hasToChanged) {
+       const nodeType = getAnimatedType(to2);
+       if (nodeType !== node.constructor) {
+@@ -3573,7 +3895,7 @@ var SpringValue = class extends FrameValue {
+           node = this._set(goal);
+         } else
+           throw Error(
+-            `Cannot animate between ${node.constructor.name} and ${nodeType.name}, as the "to" prop suggests`
++            `Cannot animate between ${node.constructor.name} and ${nodeType.name}, as the "to" prop suggests`,
+           );
+       }
+     }
+@@ -3581,12 +3903,16 @@ var SpringValue = class extends FrameValue {
+     let started = hasFluidValue(to2);
+     let finished = false;
+     if (!started) {
+-      const hasValueChanged = reset || !hasAnimated(this) && hasFromChanged;
++      const hasValueChanged = reset || (!hasAnimated(this) && hasFromChanged);
+       if (hasToChanged || hasValueChanged) {
+         finished = isEqual(computeGoal(value), goal);
+         started = !finished;
+       }
+-      if (!isEqual(anim.immediate, immediate) && !immediate || !isEqual(config2.decay, decay) || !isEqual(config2.velocity, velocity)) {
++      if (
++        (!isEqual(anim.immediate, immediate) && !immediate) ||
++        !isEqual(config2.decay, decay) ||
++        !isEqual(config2.velocity, velocity)
++      ) {
+         started = true;
+       }
+     }
+@@ -3600,7 +3926,11 @@ var SpringValue = class extends FrameValue {
+     if (!hasAsyncTo) {
+       if (started || hasFluidValue(prevTo)) {
+         anim.values = node.getPayload();
+-        anim.toValues = hasFluidValue(to2) ? null : goalType == AnimatedString ? [1] : toArray(goal);
++        anim.toValues = hasFluidValue(to2)
++          ? null
++          : goalType == AnimatedString
++            ? [1]
++            : toArray(goal);
+       }
+       if (anim.immediate != immediate) {
+         anim.immediate = immediate;
+@@ -3701,7 +4031,7 @@ var SpringValue = class extends FrameValue {
+         this,
+         "onStart",
+         getFinishedResult(this, checkFinished(this, anim.to)),
+-        this
++        this,
+       );
+     }
+   }
+@@ -3753,9 +4083,11 @@ var SpringValue = class extends FrameValue {
+       }
+       callFluidObservers(this, {
+         type: "idle",
+-        parent: this
++        parent: this,
+       });
+-      const result = cancel ? getCancelledResult(this.get()) : getFinishedResult(this.get(), checkFinished(this, goal ?? anim.to));
++      const result = cancel
++        ? getCancelledResult(this.get())
++        : getFinishedResult(this.get(), checkFinished(this, goal ?? anim.to));
+       flushCalls(this._pendingCalls, result);
+       if (anim.changed) {
+         anim.changed = false;
+@@ -3791,17 +4123,15 @@ function createLoopUpdate(props, loop2 = props.loop, to2 = props.to) {
+       reset,
+       // The "loop" prop can return a "useSpring" props object to
+       // override any of the original props.
+-      ...overrides
++      ...overrides,
+     });
+   }
+ }
+ function createUpdate(props) {
+-  const { to: to2, from } = props = inferTo(props);
++  const { to: to2, from } = (props = inferTo(props));
+   const keys = /* @__PURE__ */ new Set();
+-  if (is.obj(to2))
+-    findDefined(to2, keys);
+-  if (is.obj(from))
+-    findDefined(from, keys);
++  if (is.obj(to2)) findDefined(to2, keys);
++  if (is.obj(from)) findDefined(from, keys);
+   props.keys = keys.size ? Array.from(keys) : null;
+   return props;
+ }
+@@ -3815,15 +4145,12 @@ function declareUpdate(props) {
+ function findDefined(values, keys) {
+   eachProp(values, (value, key) => value != null && keys.add(key));
+ }
+-var ACTIVE_EVENTS = [
+-  "onStart",
+-  "onRest",
+-  "onChange",
+-  "onPause",
+-  "onResume"
+-];
++var ACTIVE_EVENTS = ["onStart", "onRest", "onChange", "onPause", "onResume"];
+ function mergeActiveFn(target, props, type) {
+-  target.animation[type] = props[type] !== getDefaultProp(props, type) ? resolveProp(props[type], target.key) : void 0;
++  target.animation[type] =
++    props[type] !== getDefaultProp(props, type)
++      ? resolveProp(props[type], target.key)
++      : void 0;
+ }
+ function sendEvent(target, type, ...args) {
+   target.animation[type]?.(...args);
+@@ -3844,12 +4171,12 @@ var Controller = class {
+       paused: false,
+       pauseQueue: /* @__PURE__ */ new Set(),
+       resumeQueue: /* @__PURE__ */ new Set(),
+-      timeouts: /* @__PURE__ */ new Set()
++      timeouts: /* @__PURE__ */ new Set(),
+     };
+     this._events = {
+       onStart: /* @__PURE__ */ new Map(),
+       onChange: /* @__PURE__ */ new Map(),
+-      onRest: /* @__PURE__ */ new Map()
++      onRest: /* @__PURE__ */ new Map(),
+     };
+     this._onFrame = this._onFrame.bind(this);
+     if (flush3) {
+@@ -3864,9 +4191,12 @@ var Controller = class {
+    * no async animation is currently active.
+    */
+   get idle() {
+-    return !this._state.asyncTo && Object.values(this.springs).every((spring) => {
+-      return spring.idle && !spring.isDelayed && !spring.isPaused;
+-    });
++    return (
++      !this._state.asyncTo &&
++      Object.values(this.springs).every((spring) => {
++        return spring.idle && !spring.isDelayed && !spring.isPaused;
++      })
++    );
+   }
+   get item() {
+     return this._item;
+@@ -3877,7 +4207,7 @@ var Controller = class {
+   /** Get the current values of our springs */
+   get() {
+     const values = {};
+-    this.each((spring, key) => values[key] = spring.get());
++    this.each((spring, key) => (values[key] = spring.get()));
+     return values;
+   }
+   /** Set the current values without animating. */
+@@ -3959,7 +4289,7 @@ var Controller = class {
+     const { onStart, onChange, onRest } = this._events;
+     const active = this._active.size > 0;
+     const changed = this._changed.size > 0;
+-    if (active && !this._started || changed && !this._started) {
++    if ((active && !this._started) || (changed && !this._started)) {
+       this._started = true;
+       flush(onStart, ([onStart2, result]) => {
+         result.value = this.get();
+@@ -3967,7 +4297,7 @@ var Controller = class {
+       });
+     }
+     const idle = !active && this._started;
+-    const values = changed || idle && onRest.size ? this.get() : null;
++    const values = changed || (idle && onRest.size) ? this.get() : null;
+     if (changed && onChange.size) {
+       flush(onChange, ([onChange2, result]) => {
+         result.value = values;
+@@ -3991,14 +4321,13 @@ var Controller = class {
+       }
+     } else if (event.type == "idle") {
+       this._active.delete(event.parent);
+-    } else
+-      return;
++    } else return;
+     raf.onFrame(this._onFrame);
+   }
+ };
+ function flushUpdateQueue(ctrl, queue) {
+   return Promise.all(queue.map((props) => flushUpdate(ctrl, props))).then(
+-    (results) => getCombinedResult(ctrl, results)
++    (results) => getCombinedResult(ctrl, results),
+   );
+ }
+ async function flushUpdate(ctrl, props, isLoop) {
+@@ -4007,10 +4336,8 @@ async function flushUpdate(ctrl, props, isLoop) {
+   if (loop2) {
+     props.loop = false;
+   }
+-  if (to2 === false)
+-    props.to = null;
+-  if (from === false)
+-    props.from = null;
++  if (to2 === false) props.to = null;
++  if (from === false) props.from = null;
+   const asyncTo = is.arr(to2) || is.fun(to2) ? to2 : void 0;
+   if (asyncTo) {
+     props.to = void 0;
+@@ -4026,15 +4353,13 @@ async function flushUpdate(ctrl, props, isLoop) {
+         props[key] = ({ finished, cancelled }) => {
+           const result2 = queue.get(handler);
+           if (result2) {
+-            if (!finished)
+-              result2.finished = false;
+-            if (cancelled)
+-              result2.cancelled = true;
++            if (!finished) result2.finished = false;
++            if (cancelled) result2.cancelled = true;
+           } else {
+             queue.set(handler, {
+               value: null,
+               finished: finished || false,
+-              cancelled: cancelled || false
++              cancelled: cancelled || false,
+             });
+           }
+         };
+@@ -4051,11 +4376,12 @@ async function flushUpdate(ctrl, props, isLoop) {
+   } else if (state.paused) {
+     props.pause = true;
+   }
+-  const promises = (keys || Object.keys(ctrl.springs)).map(
+-    (key) => ctrl.springs[key].start(props)
++  const promises = (keys || Object.keys(ctrl.springs)).map((key) =>
++    ctrl.springs[key].start(props),
+   );
+-  const cancel = props.cancel === true || getDefaultProp(props, "cancel") === true;
+-  if (asyncTo || cancel && state.asyncId) {
++  const cancel =
++    props.cancel === true || getDefaultProp(props, "cancel") === true;
++  if (asyncTo || (cancel && state.asyncId)) {
+     promises.push(
+       scheduleProps(++ctrl["_lastAsyncId"], {
+         props,
+@@ -4069,18 +4395,11 @@ async function flushUpdate(ctrl, props, isLoop) {
+               resolve(getCancelledResult(ctrl));
+             } else {
+               props2.onRest = onRest;
+-              resolve(
+-                runAsync(
+-                  asyncTo,
+-                  props2,
+-                  state,
+-                  ctrl
+-                )
+-              );
++              resolve(runAsync(asyncTo, props2, state, ctrl));
+             }
+-          }
+-        }
+-      })
++          },
++        },
++      }),
+     );
+   }
+   if (state.paused) {
+@@ -4150,15 +4469,17 @@ function prepareKeys(ctrl, queue) {
+     });
+   });
+ }
+-var SpringContext = ({
+-  children,
+-  ...props
+-}) => {
++var SpringContext = ({ children, ...props }) => {
+   const inherited = useContext(ctx);
+-  const pause = props.pause || !!inherited.pause, immediate = props.immediate || !!inherited.immediate;
++  const pause = props.pause || !!inherited.pause,
++    immediate = props.immediate || !!inherited.immediate;
+   props = useMemoOne(() => ({ pause, immediate }), [pause, immediate]);
+   const { Provider } = ctx;
+-  return /* @__PURE__ */ React3.createElement(Provider, { value: props }, children);
++  return /* @__PURE__ */ React3.createElement(
++    Provider,
++    { value: props },
++    children,
++  );
+ };
+ var ctx = makeContext(SpringContext, {});
+ SpringContext.Provider = ctx.Provider;
+@@ -4171,7 +4492,7 @@ function makeContext(target, init) {
+ }
+ var SpringRef = () => {
+   const current = [];
+-  const SpringRef2 = function(props) {
++  const SpringRef2 = function (props) {
+     deprecateDirectCall();
+     const results = [];
+     each(current, (ctrl, i) => {
+@@ -4187,25 +4508,24 @@ var SpringRef = () => {
+     return results;
+   };
+   SpringRef2.current = current;
+-  SpringRef2.add = function(ctrl) {
++  SpringRef2.add = function (ctrl) {
+     if (!current.includes(ctrl)) {
+       current.push(ctrl);
+     }
+   };
+-  SpringRef2.delete = function(ctrl) {
++  SpringRef2.delete = function (ctrl) {
+     const i = current.indexOf(ctrl);
+-    if (~i)
+-      current.splice(i, 1);
++    if (~i) current.splice(i, 1);
+   };
+-  SpringRef2.pause = function() {
++  SpringRef2.pause = function () {
+     each(current, (ctrl) => ctrl.pause(...arguments));
+     return this;
+   };
+-  SpringRef2.resume = function() {
++  SpringRef2.resume = function () {
+     each(current, (ctrl) => ctrl.resume(...arguments));
+     return this;
+   };
+-  SpringRef2.set = function(values) {
++  SpringRef2.set = function (values) {
+     each(current, (ctrl, i) => {
+       const update22 = is.fun(values) ? values(i, ctrl) : values;
+       if (update22) {
+@@ -4213,7 +4533,7 @@ var SpringRef = () => {
+       }
+     });
+   };
+-  SpringRef2.start = function(props) {
++  SpringRef2.start = function (props) {
+     const results = [];
+     each(current, (ctrl, i) => {
+       if (is.und(props)) {
+@@ -4227,15 +4547,15 @@ var SpringRef = () => {
+     });
+     return results;
+   };
+-  SpringRef2.stop = function() {
++  SpringRef2.stop = function () {
+     each(current, (ctrl) => ctrl.stop(...arguments));
+     return this;
+   };
+-  SpringRef2.update = function(props) {
++  SpringRef2.update = function (props) {
+     each(current, (ctrl, i) => ctrl.update(this._getProps(props, ctrl, i)));
+     return this;
+   };
+-  const _getProps = function(arg, ctrl, index) {
++  const _getProps = function (arg, ctrl, index) {
+     return is.fun(arg) ? arg(index, ctrl) : arg;
+   };
+   SpringRef2._getProps = _getProps;
+@@ -4243,11 +4563,10 @@ var SpringRef = () => {
+ };
+ function useSprings(length, props, deps) {
+   const propsFn = is.fun(props) && props;
+-  if (propsFn && !deps)
+-    deps = [];
++  if (propsFn && !deps) deps = [];
+   const ref = useMemo3(
+-    () => propsFn || arguments.length == 3 ? SpringRef() : void 0,
+-    []
++    () => (propsFn || arguments.length == 3 ? SpringRef() : void 0),
++    [],
+   );
+   const layoutId = useRef6(0);
+   const forceUpdate = useForceUpdate();
+@@ -4257,17 +4576,22 @@ function useSprings(length, props, deps) {
+       queue: [],
+       flush(ctrl, updates2) {
+         const springs2 = getSprings(ctrl, updates2);
+-        const canFlushSync = layoutId.current > 0 && !state.queue.length && !Object.keys(springs2).some((key) => !ctrl.springs[key]);
+-        return canFlushSync ? flushUpdateQueue(ctrl, updates2) : new Promise((resolve) => {
+-          setSprings(ctrl, springs2);
+-          state.queue.push(() => {
+-            resolve(flushUpdateQueue(ctrl, updates2));
+-          });
+-          forceUpdate();
+-        });
+-      }
++        const canFlushSync =
++          layoutId.current > 0 &&
++          !state.queue.length &&
++          !Object.keys(springs2).some((key) => !ctrl.springs[key]);
++        return canFlushSync
++          ? flushUpdateQueue(ctrl, updates2)
++          : new Promise((resolve) => {
++              setSprings(ctrl, springs2);
++              state.queue.push(() => {
++                resolve(flushUpdateQueue(ctrl, updates2));
++              });
++              forceUpdate();
++            });
++      },
+     }),
+-    []
++    [],
+   );
+   const ctrls = useRef6([...state.ctrls]);
+   const updates = [];
+@@ -4285,7 +4609,9 @@ function useSprings(length, props, deps) {
+   }, deps);
+   function declareUpdates(startIndex, endIndex) {
+     for (let i = startIndex; i < endIndex; i++) {
+-      const ctrl = ctrls.current[i] || (ctrls.current[i] = new Controller(null, state.flush));
++      const ctrl =
++        ctrls.current[i] ||
++        (ctrls.current[i] = new Controller(null, state.flush));
+       const update22 = propsFn ? propsFn(i, ctrl) : props[i];
+       if (update22) {
+         updates[i] = declareUpdate(update22);
+@@ -4331,7 +4657,7 @@ function useSpring(props, deps) {
+   const [[values], ref] = useSprings(
+     1,
+     isFn ? props : [props],
+-    isFn ? deps || [] : deps
++    isFn ? deps || [] : deps,
+   );
+   return isFn || arguments.length == 2 ? [values, ref] : values;
+ }
+@@ -4358,7 +4684,9 @@ var Interpolation = class extends FrameValue {
+     }
+   }
+   _get() {
+-    const inputs = is.arr(this.source) ? this.source.map(getFluidValue) : toArray(getFluidValue(this.source));
++    const inputs = is.arr(this.source)
++      ? this.source.map(getFluidValue)
++      : toArray(getFluidValue(this.source));
+     return this.calc(...inputs);
+   }
+   _start() {
+@@ -4415,8 +4743,9 @@ var Interpolation = class extends FrameValue {
+       this._active.delete(event.parent);
+     } else if (event.type == "priority") {
+       this.priority = toArray(this.source).reduce(
+-        (highest, parent) => Math.max(highest, (isFrameValue(parent) ? parent.priority : 0) + 1),
+-        0
++        (highest, parent) =>
++          Math.max(highest, (isFrameValue(parent) ? parent.priority : 0) + 1),
++        0,
+       );
+     }
+   }
+@@ -4435,13 +4764,13 @@ function becomeIdle(self) {
+     });
+     callFluidObservers(self, {
+       type: "idle",
+-      parent: self
++      parent: self,
+     });
+   }
+ }
+ globals_exports.assign({
+   createStringInterpolator: createStringInterpolator2,
+-  to: (source, args) => new Interpolation(source, args)
++  to: (source, args) => new Interpolation(source, args),
+ });
+ var update2 = frameLoop.advance;
+ 
+@@ -4449,9 +4778,13 @@ var update2 = frameLoop.advance;
+ import { unstable_batchedUpdates } from "react-dom";
+ var isCustomPropRE = /^--/;
+ function dangerousStyleValue(name, value) {
+-  if (value == null || typeof value === "boolean" || value === "")
+-    return "";
+-  if (typeof value === "number" && value !== 0 && !isCustomPropRE.test(name) && !(isUnitlessNumber.hasOwnProperty(name) && isUnitlessNumber[name]))
++  if (value == null || typeof value === "boolean" || value === "") return "";
++  if (
++    typeof value === "number" &&
++    value !== 0 &&
++    !isCustomPropRE.test(name) &&
++    !(isUnitlessNumber.hasOwnProperty(name) && isUnitlessNumber[name])
++  )
+     return value + "px";
+   return ("" + value).trim();
+ }
+@@ -4460,15 +4793,21 @@ function applyAnimatedValues(instance, props) {
+   if (!instance.nodeType || !instance.setAttribute) {
+     return false;
+   }
+-  const isFilterElement = instance.nodeName === "filter" || instance.parentNode && instance.parentNode.nodeName === "filter";
+-  const { style, children, scrollTop, scrollLeft, viewBox, ...attributes } = props;
++  const isFilterElement =
++    instance.nodeName === "filter" ||
++    (instance.parentNode && instance.parentNode.nodeName === "filter");
++  const { style, children, scrollTop, scrollLeft, viewBox, ...attributes } =
++    props;
+   const values = Object.values(attributes);
+-  const names = Object.keys(attributes).map(
+-    (name) => isFilterElement || instance.hasAttribute(name) ? name : attributeCache[name] || (attributeCache[name] = name.replace(
+-      /([A-Z])/g,
+-      // Attributes are written in dash case
+-      (n) => "-" + n.toLowerCase()
+-    ))
++  const names = Object.keys(attributes).map((name) =>
++    isFilterElement || instance.hasAttribute(name)
++      ? name
++      : attributeCache[name] ||
++        (attributeCache[name] = name.replace(
++          /([A-Z])/g,
++          // Attributes are written in dash case
++          (n) => "-" + n.toLowerCase(),
++        )),
+   );
+   if (children !== void 0) {
+     instance.textContent = children;
+@@ -4538,19 +4877,26 @@ var isUnitlessNumber = {
+   strokeDashoffset: true,
+   strokeMiterlimit: true,
+   strokeOpacity: true,
+-  strokeWidth: true
++  strokeWidth: true,
+ };
+-var prefixKey = (prefix2, key) => prefix2 + key.charAt(0).toUpperCase() + key.substring(1);
++var prefixKey = (prefix2, key) =>
++  prefix2 + key.charAt(0).toUpperCase() + key.substring(1);
+ var prefixes = ["Webkit", "Ms", "Moz", "O"];
+ isUnitlessNumber = Object.keys(isUnitlessNumber).reduce((acc, prop) => {
+-  prefixes.forEach((prefix2) => acc[prefixKey(prefix2, prop)] = acc[prop]);
++  prefixes.forEach((prefix2) => (acc[prefixKey(prefix2, prop)] = acc[prop]));
+   return acc;
+ }, isUnitlessNumber);
+ var domTransforms = /^(matrix|translate|scale|rotate|skew)/;
+ var pxTransforms = /^(translate)/;
+ var degTransforms = /^(rotate|skew)/;
+-var addUnit = (value, unit) => is.num(value) && value !== 0 ? value + unit : value;
+-var isValueIdentity = (value, id) => is.arr(value) ? value.every((v) => isValueIdentity(v, id)) : is.num(value) ? value === id : parseFloat(value) === id;
++var addUnit = (value, unit) =>
++  is.num(value) && value !== 0 ? value + unit : value;
++var isValueIdentity = (value, id) =>
++  is.arr(value)
++    ? value.every((v) => isValueIdentity(v, id))
++    : is.num(value)
++      ? value === id
++      : parseFloat(value) === id;
+ var AnimatedStyle = class extends AnimatedObject {
+   constructor({ x, y, z, ...style }) {
+     const inputs = [];
+@@ -4560,7 +4906,7 @@ var AnimatedStyle = class extends AnimatedObject {
+       transforms.push((xyz) => [
+         `translate3d(${xyz.map((v) => addUnit(v, "px")).join(",")})`,
+         // prettier-ignore
+-        isValueIdentity(xyz, 0)
++        isValueIdentity(xyz, 0),
+       ]);
+     }
+     eachProp(style, (value, key) => {
+@@ -4569,18 +4915,23 @@ var AnimatedStyle = class extends AnimatedObject {
+         transforms.push((transform) => [transform, transform === ""]);
+       } else if (domTransforms.test(key)) {
+         delete style[key];
+-        if (is.und(value))
+-          return;
+-        const unit = pxTransforms.test(key) ? "px" : degTransforms.test(key) ? "deg" : "";
++        if (is.und(value)) return;
++        const unit = pxTransforms.test(key)
++          ? "px"
++          : degTransforms.test(key)
++            ? "deg"
++            : "";
+         inputs.push(toArray(value));
+         transforms.push(
+-          key === "rotate3d" ? ([x2, y2, z2, deg]) => [
+-            `rotate3d(${x2},${y2},${z2},${addUnit(deg, unit)})`,
+-            isValueIdentity(deg, 0)
+-          ] : (input) => [
+-            `${key}(${input.map((v) => addUnit(v, unit)).join(",")})`,
+-            isValueIdentity(input, key.startsWith("scale") ? 1 : 0)
+-          ]
++          key === "rotate3d"
++            ? ([x2, y2, z2, deg]) => [
++                `rotate3d(${x2},${y2},${z2},${addUnit(deg, unit)})`,
++                isValueIdentity(deg, 0),
++              ]
++            : (input) => [
++                `${key}(${input.map((v) => addUnit(v, unit)).join(",")})`,
++                isValueIdentity(input, key.startsWith("scale") ? 1 : 0),
++              ],
+         );
+       }
+     });
+@@ -4606,7 +4957,7 @@ var FluidTransform = class extends FluidValue {
+     each(this.inputs, (input, i) => {
+       const arg1 = getFluidValue(input[0]);
+       const [t, id] = this.transforms[i](
+-        is.arr(arg1) ? arg1 : input.map(getFluidValue)
++        is.arr(arg1) ? arg1 : input.map(getFluidValue),
+       );
+       transform += " " + t;
+       identity = identity && id;
+@@ -4616,23 +4967,21 @@ var FluidTransform = class extends FluidValue {
+   // Start observing our inputs once we have an observer.
+   observerAdded(count) {
+     if (count == 1)
+-      each(
+-        this.inputs,
+-        (input) => each(
++      each(this.inputs, (input) =>
++        each(
+           input,
+-          (value) => hasFluidValue(value) && addFluidObserver(value, this)
+-        )
++          (value) => hasFluidValue(value) && addFluidObserver(value, this),
++        ),
+       );
+   }
+   // Stop observing our inputs once we have no observers.
+   observerRemoved(count) {
+     if (count == 0)
+-      each(
+-        this.inputs,
+-        (input) => each(
++      each(this.inputs, (input) =>
++        each(
+           input,
+-          (value) => hasFluidValue(value) && removeFluidObserver(value, this)
+-        )
++          (value) => hasFluidValue(value) && removeFluidObserver(value, this),
++        ),
+       );
+   }
+   eventObserved(event) {
+@@ -4776,18 +5125,18 @@ var primitives = [
+   "stop",
+   "svg",
+   "text",
+-  "tspan"
++  "tspan",
+ ];
+ globals_exports.assign({
+   batchedUpdates: unstable_batchedUpdates,
+   createStringInterpolator: createStringInterpolator2,
+-  colors: colors2
++  colors: colors2,
+ });
+ var host = createHost(primitives, {
+   applyAnimatedValues,
+   createAnimatedStyle: (style) => new AnimatedStyle(style),
+   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+-  getComponentProps: ({ scrollTop, scrollLeft, ...props }) => props
++  getComponentProps: ({ scrollTop, scrollLeft, ...props }) => props,
+ });
+ var animated = host.animated;
+ 
+@@ -4804,14 +5153,14 @@ var defaultProps = {
+   trackMouse: false,
+   trackTouch: true,
+   swipeDuration: Infinity,
+-  touchEventOptions: { passive: true }
++  touchEventOptions: { passive: true },
+ };
+ var initialState = {
+   first: true,
+   initial: [0, 0],
+   start: 0,
+   swiping: false,
+-  xy: [0, 0]
++  xy: [0, 0],
+ };
+ var mouseMove = "mousemove";
+ var mouseUp = "mouseup";
+@@ -4830,18 +5179,18 @@ function getDirection(absX, absY, deltaX, deltaY) {
+   return UP;
+ }
+ function rotateXYByAngle(pos, angle) {
+-  if (angle === 0)
+-    return pos;
+-  const angleInRadians = Math.PI / 180 * angle;
+-  const x = pos[0] * Math.cos(angleInRadians) + pos[1] * Math.sin(angleInRadians);
+-  const y = pos[1] * Math.cos(angleInRadians) - pos[0] * Math.sin(angleInRadians);
++  if (angle === 0) return pos;
++  const angleInRadians = (Math.PI / 180) * angle;
++  const x =
++    pos[0] * Math.cos(angleInRadians) + pos[1] * Math.sin(angleInRadians);
++  const y =
++    pos[1] * Math.cos(angleInRadians) - pos[0] * Math.sin(angleInRadians);
+   return [x, y];
+ }
+ function getHandlers(set, handlerProps) {
+   const onStart = (event) => {
+     const isTouch = "touches" in event;
+-    if (isTouch && event.touches.length > 1)
+-      return;
++    if (isTouch && event.touches.length > 1) return;
+     set((state, props) => {
+       if (props.trackMouse && !isTouch) {
+         document.addEventListener(mouseMove, onMove);
+@@ -4849,8 +5198,12 @@ function getHandlers(set, handlerProps) {
+       }
+       const { clientX, clientY } = isTouch ? event.touches[0] : event;
+       const xy = rotateXYByAngle([clientX, clientY], props.rotationAngle);
+-      props.onTouchStartOrOnMouseDown && props.onTouchStartOrOnMouseDown({ event });
+-      return Object.assign(Object.assign(Object.assign({}, state), initialState), { initial: xy.slice(), xy, start: event.timeStamp || 0 });
++      props.onTouchStartOrOnMouseDown &&
++        props.onTouchStartOrOnMouseDown({ event });
++      return Object.assign(
++        Object.assign(Object.assign({}, state), initialState),
++        { initial: xy.slice(), xy, start: event.timeStamp || 0 },
++      );
+     });
+   };
+   const onMove = (event) => {
+@@ -4860,7 +5213,9 @@ function getHandlers(set, handlerProps) {
+         return state;
+       }
+       if (event.timeStamp - state.start > props.swipeDuration) {
+-        return state.swiping ? Object.assign(Object.assign({}, state), { swiping: false }) : state;
++        return state.swiping
++          ? Object.assign(Object.assign({}, state), { swiping: false })
++          : state;
+       }
+       const { clientX, clientY } = isTouch ? event.touches[0] : event;
+       const [x, y] = rotateXYByAngle([clientX, clientY], props.rotationAngle);
+@@ -4872,9 +5227,11 @@ function getHandlers(set, handlerProps) {
+       const velocity = Math.sqrt(absX * absX + absY * absY) / (time || 1);
+       const vxvy = [deltaX / (time || 1), deltaY / (time || 1)];
+       const dir = getDirection(absX, absY, deltaX, deltaY);
+-      const delta = typeof props.delta === "number" ? props.delta : props.delta[dir.toLowerCase()] || defaultProps.delta;
+-      if (absX < delta && absY < delta && !state.swiping)
+-        return state;
++      const delta =
++        typeof props.delta === "number"
++          ? props.delta
++          : props.delta[dir.toLowerCase()] || defaultProps.delta;
++      if (absX < delta && absY < delta && !state.swiping) return state;
+       const eventData = {
+         absX,
+         absY,
+@@ -4885,7 +5242,7 @@ function getHandlers(set, handlerProps) {
+         first: state.first,
+         initial: state.initial,
+         velocity,
+-        vxvy
++        vxvy,
+       };
+       eventData.first && props.onSwipeStart && props.onSwipeStart(eventData);
+       props.onSwiping && props.onSwiping(eventData);
+@@ -4893,14 +5250,19 @@ function getHandlers(set, handlerProps) {
+       if (props.onSwiping || props.onSwiped || props[`onSwiped${dir}`]) {
+         cancelablePageSwipe = true;
+       }
+-      if (cancelablePageSwipe && props.preventScrollOnSwipe && props.trackTouch && event.cancelable) {
++      if (
++        cancelablePageSwipe &&
++        props.preventScrollOnSwipe &&
++        props.trackTouch &&
++        event.cancelable
++      ) {
+         event.preventDefault();
+       }
+       return Object.assign(Object.assign({}, state), {
+         // first is now always false
+         first: false,
+         eventData,
+-        swiping: true
++        swiping: true,
+       });
+     });
+   };
+@@ -4909,7 +5271,9 @@ function getHandlers(set, handlerProps) {
+       let eventData;
+       if (state.swiping && state.eventData) {
+         if (event.timeStamp - state.start < props.swipeDuration) {
+-          eventData = Object.assign(Object.assign({}, state.eventData), { event });
++          eventData = Object.assign(Object.assign({}, state.eventData), {
++            event,
++          });
+           props.onSwiped && props.onSwiped(eventData);
+           const onSwipedDir = props[`onSwiped${eventData.dir}`];
+           onSwipedDir && onSwipedDir(eventData);
+@@ -4918,7 +5282,10 @@ function getHandlers(set, handlerProps) {
+         props.onTap && props.onTap({ event });
+       }
+       props.onTouchEndOrOnMouseUp && props.onTouchEndOrOnMouseUp({ event });
+-      return Object.assign(Object.assign(Object.assign({}, state), initialState), { eventData });
++      return Object.assign(
++        Object.assign(Object.assign({}, state), initialState),
++        { eventData },
++      );
+     });
+   };
+   const cleanUpMouse = () => {
+@@ -4930,19 +5297,24 @@ function getHandlers(set, handlerProps) {
+     onEnd(e);
+   };
+   const attachTouch = (el, props) => {
+-    let cleanup = () => {
+-    };
++    let cleanup = () => {};
+     if (el && el.addEventListener) {
+-      const baseOptions = Object.assign(Object.assign({}, defaultProps.touchEventOptions), props.touchEventOptions);
++      const baseOptions = Object.assign(
++        Object.assign({}, defaultProps.touchEventOptions),
++        props.touchEventOptions,
++      );
+       const tls = [
+         [touchStart, onStart, baseOptions],
+         // preventScrollOnSwipe option supersedes touchEventOptions.passive
+         [
+           touchMove,
+           onMove,
+-          Object.assign(Object.assign({}, baseOptions), props.preventScrollOnSwipe ? { passive: false } : {})
++          Object.assign(
++            Object.assign({}, baseOptions),
++            props.preventScrollOnSwipe ? { passive: false } : {},
++          ),
+         ],
+-        [touchEnd, onEnd, baseOptions]
++        [touchEnd, onEnd, baseOptions],
+       ];
+       tls.forEach(([e, h, o]) => el.addEventListener(e, h, o));
+       cleanup = () => tls.forEach(([e, h]) => el.removeEventListener(e, h));
+@@ -4950,11 +5322,9 @@ function getHandlers(set, handlerProps) {
+     return cleanup;
+   };
+   const onRef = (el) => {
+-    if (el === null)
+-      return;
++    if (el === null) return;
+     set((state, props) => {
+-      if (state.el === el)
+-        return state;
++      if (state.el === el) return state;
+       const addState = {};
+       if (state.el && state.el !== el && state.cleanUpTouch) {
+         state.cleanUpTouch();
+@@ -4963,11 +5333,14 @@ function getHandlers(set, handlerProps) {
+       if (props.trackTouch && el) {
+         addState.cleanUpTouch = attachTouch(el, props);
+       }
+-      return Object.assign(Object.assign(Object.assign({}, state), { el }), addState);
++      return Object.assign(
++        Object.assign(Object.assign({}, state), { el }),
++        addState,
++      );
+     });
+   };
+   const output = {
+-    ref: onRef
++    ref: onRef,
+   };
+   if (handlerProps.trackMouse) {
+     output.onMouseDown = onStart;
+@@ -4982,11 +5355,18 @@ function updateTransientState(state, props, previousProps, attachTouch) {
+     return Object.assign(Object.assign({}, state), { cleanUpTouch: void 0 });
+   }
+   if (!state.cleanUpTouch) {
+-    return Object.assign(Object.assign({}, state), { cleanUpTouch: attachTouch(state.el, props) });
++    return Object.assign(Object.assign({}, state), {
++      cleanUpTouch: attachTouch(state.el, props),
++    });
+   }
+-  if (props.preventScrollOnSwipe !== previousProps.preventScrollOnSwipe || props.touchEventOptions.passive !== previousProps.touchEventOptions.passive) {
++  if (
++    props.preventScrollOnSwipe !== previousProps.preventScrollOnSwipe ||
++    props.touchEventOptions.passive !== previousProps.touchEventOptions.passive
++  ) {
+     state.cleanUpTouch();
+-    return Object.assign(Object.assign({}, state), { cleanUpTouch: attachTouch(state.el, props) });
++    return Object.assign(Object.assign({}, state), {
++      cleanUpTouch: attachTouch(state.el, props),
++    });
+   }
+   return state;
+ }
+@@ -4994,17 +5374,38 @@ function useSwipeable(options) {
+   const { trackMouse } = options;
+   const transientState = React4.useRef(Object.assign({}, initialState));
+   const transientProps = React4.useRef(Object.assign({}, defaultProps));
+-  const previousProps = React4.useRef(Object.assign({}, transientProps.current));
++  const previousProps = React4.useRef(
++    Object.assign({}, transientProps.current),
++  );
+   previousProps.current = Object.assign({}, transientProps.current);
+-  transientProps.current = Object.assign(Object.assign({}, defaultProps), options);
++  transientProps.current = Object.assign(
++    Object.assign({}, defaultProps),
++    options,
++  );
+   let defaultKey;
+   for (defaultKey in defaultProps) {
+     if (transientProps.current[defaultKey] === void 0) {
+       transientProps.current[defaultKey] = defaultProps[defaultKey];
+     }
+   }
+-  const [handlers, attachTouch] = React4.useMemo(() => getHandlers((stateSetter) => transientState.current = stateSetter(transientState.current, transientProps.current), { trackMouse }), [trackMouse]);
+-  transientState.current = updateTransientState(transientState.current, transientProps.current, previousProps.current, attachTouch);
++  const [handlers, attachTouch] = React4.useMemo(
++    () =>
++      getHandlers(
++        (stateSetter) =>
++          (transientState.current = stateSetter(
++            transientState.current,
++            transientProps.current,
++          )),
++        { trackMouse },
++      ),
++    [trackMouse],
++  );
++  transientState.current = updateTransientState(
++    transientState.current,
++    transientProps.current,
++    previousProps.current,
++    attachTouch,
++  );
+   return handlers;
+ }
+ 
+@@ -5017,7 +5418,7 @@ function Slide({
+   image,
+   padding = 48,
+   style,
+-  transition: slideTransition = {}
++  transition: slideTransition = {},
+ }) {
+   const {
+     activeView,
+@@ -5029,7 +5430,7 @@ function Slide({
+     pendingView,
+     regressSlide,
+     slideCount,
+-    transition
++    transition,
+   } = useContext4(DeckContext);
+   const mergedTransition = useMemo5(() => {
+     if (slideTransition === Transitions.none) {
+@@ -5055,13 +5456,21 @@ function Slide({
+       return [false, false];
+     }
+     if (slideCount === 2) {
+-      return slideIndex === activeView.slideIndex ? [false, false] : slideIndex === 0 ? [true, false] : [false, true];
+-    }
+-    const isWrappingForward = slideIndex === slideCount - 1 && activeView.slideIndex === 0;
+-    const isWrappingReverse = slideIndex === 0 && activeView.slideIndex === slideCount - 1;
++      return slideIndex === activeView.slideIndex
++        ? [false, false]
++        : slideIndex === 0
++          ? [true, false]
++          : [false, true];
++    }
++    const isWrappingForward =
++      slideIndex === slideCount - 1 && activeView.slideIndex === 0;
++    const isWrappingReverse =
++      slideIndex === 0 && activeView.slideIndex === slideCount - 1;
+     const isWrapping = isWrappingForward || isWrappingReverse;
+-    const isPassed2 = !isWrapping && slideIndex < activeView.slideIndex || isWrappingForward;
+-    const isUpcoming2 = !isWrapping && slideIndex > activeView.slideIndex || isWrappingReverse;
++    const isPassed2 =
++      (!isWrapping && slideIndex < activeView.slideIndex) || isWrappingForward;
++    const isUpcoming2 =
++      (!isWrapping && slideIndex > activeView.slideIndex) || isWrappingReverse;
+     return [isPassed2, isUpcoming2];
+   })();
+   const willEnter = !isActive && isPending;
+@@ -5082,7 +5491,7 @@ function Slide({
+     } else if (pendingView.stepIndex === GOTO_FINAL_STEP) {
+       setAnimate(false);
+       commitTransition({
+-        stepIndex: 0
++        stepIndex: 0,
+       });
+     } else {
+       setAnimate(navigationDirection > 0);
+@@ -5096,13 +5505,16 @@ function Slide({
+     pendingView,
+     regressSlide,
+     slideWillChange,
+-    stepWillChange
++    stepWillChange,
+   ]);
+   useEffect7(() => {
+     if (!willExit) {
+       return;
+     }
+-    if (pendingView.slideIndex === void 0 || pendingView.slideIndex > slideCount - 1) {
++    if (
++      pendingView.slideIndex === void 0 ||
++      pendingView.slideIndex > slideCount - 1
++    ) {
+       cancelTransition();
+     } else {
+       setAnimate(navigationDirection > 0);
+@@ -5112,7 +5524,7 @@ function Slide({
+     pendingView,
+     navigationDirection,
+     willExit,
+-    slideCount
++    slideCount,
+   ]);
+   useEffect7(() => {
+     if (!willEnter) {
+@@ -5121,7 +5533,7 @@ function Slide({
+     if (pendingView.stepIndex === GOTO_FINAL_STEP) {
+       setAnimate(false);
+       commitTransition({
+-        stepIndex: 0
++        stepIndex: 0,
+       });
+     } else {
+       const isSingleForwardStep = navigationDirection > 0;
+@@ -5133,7 +5545,7 @@ function Slide({
+     commitTransition,
+     navigationDirection,
+     pendingView,
+-    willEnter
++    willEnter,
+   ]);
+   const target = useMemo5(() => {
+     if (isPassed) {
+@@ -5142,95 +5554,96 @@ function Slide({
+     if (isActive) {
+       return {
+         ...mergedTransition.enter,
+-        display: "unset"
++        display: "unset",
+       };
+     }
+     if (isUpcoming) {
+       return {
+         ...mergedTransition.from,
+-        display: "none"
++        display: "none",
+       };
+     }
+     return {
+-      display: "none"
++      display: "none",
+     };
+   }, [isPassed, isActive, isUpcoming, mergedTransition]);
+   const immediate = !animate;
+   const springFrameStyle = useSpring({
+     immediate,
+-    to: target
++    to: target,
+   });
+   const swipeHandler = useSwipeable({
+-    onSwiped: (eventData) => onSwiped(eventData)
++    onSwiped: (eventData) => onSwiped(eventData),
+   });
+-  return /* @__PURE__ */ jsx3(
+-    animated.div,
+-    {
++  return /* @__PURE__ */ jsx3(animated.div, {
++    style: {
++      background: "transparent",
++      height: "100%",
++      position: "absolute",
++      width: "100%",
++      ...springFrameStyle,
++      ...(isActive && { display: "unset" }),
++    },
++    children: /* @__PURE__ */ jsx3("div", {
++      className,
+       style: {
+-        background: "transparent",
++        backgroundPosition: "center",
++        backgroundRepeat: "no-repeat",
++        backgroundSize: "cover",
++        display: "flex",
+         height: "100%",
+-        position: "absolute",
++        overflow: "hidden",
++        position: "relative",
+         width: "100%",
+-        ...springFrameStyle,
+-        ...isActive && { display: "unset" }
++        zIndex: "0",
++        ...style,
++        ...(image ? { backgroundImage: `url('${image}')` } : null),
+       },
+-      children: /* @__PURE__ */ jsx3(
+-        "div",
+-        {
+-          className,
+-          style: {
+-            backgroundPosition: "center",
+-            backgroundRepeat: "no-repeat",
+-            backgroundSize: "cover",
+-            display: "flex",
+-            height: "100%",
+-            overflow: "hidden",
+-            position: "relative",
+-            width: "100%",
+-            zIndex: "0",
+-            ...style,
+-            ...image ? { backgroundImage: `url('${image}')` } : null
+-          },
+-          ...swipeHandler,
+-          children: /* @__PURE__ */ jsx3(
+-            "div",
+-            {
+-              style: {
+-                display: "flex",
+-                flex: 1,
+-                flexDirection: "column",
+-                justifyContent: "flex-start",
+-                padding
+-              },
+-              children: /* @__PURE__ */ jsx3(Suspense, { children })
+-            }
+-          )
+-        }
+-      )
+-    }
+-  );
++      ...swipeHandler,
++      children: /* @__PURE__ */ jsx3("div", {
++        style: {
++          display: "flex",
++          flex: 1,
++          flexDirection: "column",
++          justifyContent: "flex-start",
++          padding,
++        },
++        children: /* @__PURE__ */ jsx3(Suspense, { children }),
++      }),
++    }),
++  });
+ }
+ 
+ // src/slidesToComponent.tsx
+ import { jsx as jsx4 } from "react/jsx-runtime";
+ async function slidesToComponent(module) {
+-  const { Components: Components2, Themes, Transitions: Transitions2, default: slides } = await module;
+-  return /* @__PURE__ */ jsx4(MDXProvider, { components: { ...Components_default, ...Components2 }, children: /* @__PURE__ */ jsx4(
+-    Deck,
+-    {
+-      slides: slides.map(({ Component, data }, index) => /* @__PURE__ */ jsx4(
+-        Slide,
+-        {
+-          id: index,
+-          image: data?.image,
+-          style: Themes?.[data?.theme] || Themes?.default,
+-          transition: Transitions2?.[data?.transition] || Transitions[data?.transition] || void 0,
+-          children: /* @__PURE__ */ jsx4(Component, {})
+-        },
+-        index
+-      ))
+-    }
+-  ) });
++  const {
++    Components: Components2,
++    Themes,
++    Transitions: Transitions2,
++    default: slides,
++  } = await module;
++  return /* @__PURE__ */ jsx4(MDXProvider, {
++    components: { ...Components_default, ...Components2 },
++    children: /* @__PURE__ */ jsx4(Deck, {
++      slides: slides.map(({ Component, data }, index) =>
++        /* @__PURE__ */ jsx4(
++          Slide,
++          {
++            id: index,
++            image: data?.image,
++            style: Themes?.[data?.theme] || Themes?.default,
++            transition:
++              Transitions2?.[data?.transition] ||
++              Transitions[data?.transition] ||
++              void 0,
++            children: /* @__PURE__ */ jsx4(Component, {}),
++          },
++          index,
++        ),
++      ),
++    }),
++  });
+ }
+ 
+ // src/render.tsx
+@@ -5244,10 +5657,4 @@ async function render(element, module) {
+   }
+   roots.get(element)?.render(await slidesToComponent(module));
+ }
+-export {
+-  Deck,
+-  Slide,
+-  render,
+-  slidesToComponent,
+-  useMDXComponents
+-};
++export { Deck, Slide, render, slidesToComponent, useMDXComponents };

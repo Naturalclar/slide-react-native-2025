@@ -1,0 +1,726 @@
+export { Components } from "./Components.tsx";
+export { Themes } from "./Themes.tsx";
+
+# Claude Codeによる並列開発のすゝめ
+
+<Row>
+  <Column justify="center">
+    <GPTImage src="/gpt-agentic-coding.png" width="500"/>
+  </Column>
+  <Column justify="end" align="right">
+    <Link href="https://github.com/Naturalclar">Naturalclar</Link>
+    <Link href="https://aid.connpass.com/event/360017/">Claude Code Meetup</Link>
+  </Column>
+</Row>
+
+<Note>Page 1</Note>
+<Note>
+  Claude Code での並列開発のすすめというタイトルで発表させていだだきます。Naturalclarです。よろしくおねがいします。
+  メモ：
+  git worktree に付いて説明
+  git bare clone に付いて説明
+  その他、便利スクリプトをclaude codeに書いてもらった話
+  並列開発における注意点
+  - タスクをかなり細かく分割してスコープを小さくする。CRUD処理のC、R、U、Dをそれぞれ別のターミナルで実装させる。
+  - テストを書かせる。
+  - AI にやらせるというより、自分ならこう実装していくというステップをAIに指示する、あくまで自分の手が増えているイメージ。
+  便利スクリプト：
+  - worktree を切り替えるスクリプト：各Worktreeのbranch名がわかるので何をやっているかがわかる
+  - worktree の root branch に戻るスクリプト
+  - .env ファイルを各worktreeにコピーするスクリプト
+  - 各tmux paneに同じコマンドを実行するスクリプト
+
+</Note>
+
+---
+
+# 本日の概要
+
+<Row>
+  <Column align="left">
+    <Text>自分のセットアップ紹介</Text>
+    <Text>git worktree について</Text>
+    <Text>git bare clone について</Text>
+    <Text>その他便利スクリプトの紹介</Text>
+  </Column>
+</Row>
+
+<Note>Page 2</Note>
+<Note>
+  今日の発表の概要について説明します。
+  - 自分のセットアップ紹介: 現在の開発環境の紹介
+  - git worktree について: 複数のワーキングツリーを管理する方法
+  - git bare clone について: リポジトリの効率的な管理方法
+  - その他便利スクリプトの紹介: 開発効率を上げるツールたち
+  
+  他の人のターミナルがどうなってるのか興味あるのでぜひシェアしあいましょう
+</Note>
+
+---
+
+# セットアップ紹介
+
+<Row>
+  <Column align="center">
+    <Image width="80vw" height="50vh" objectFit="contain" src="./terminal.png"/>
+  </Column>
+</Row>
+
+<Note>Page 3</Note>
+
+---
+
+transition: none
+
+--
+
+# セットアップ紹介
+
+<Row>
+  <Column align="center">
+    <Image width="80vw" height="50vh" objectFit="contain" src="./terminal-detail.png"/>
+  </Column>
+</Row>
+
+<Note>Page 4</Note>
+
+---
+
+transition: none
+
+--
+
+
+# セットアップ紹介
+
+<Row>
+  <Column align="center">
+    <Image width="80vw" height="50vh" objectFit="contain" src="./diff.png"/>
+  </Column>
+</Row>
+
+<Note>Page 5</Note>
+
+---
+
+transition: none
+
+--
+
+
+# セットアップ紹介
+
+<Row>
+  <Column align="center">
+    <Image width="80vw" height="50vh" objectFit="contain" src="./editor.png"/>
+  </Column>
+</Row>
+
+<Note>Page 6</Note>
+
+<Note> 
+  2つ目のwindowは各worktreeのdiffを見たり、手作業でコードする場所として使っています。
+  3つ目のwindowは各worktreeのサーバー、クライアントを立ち上げて動作確認する場所として使っています。
+  その他、各worktreeのテスト結果を確認するために都度windowを開いています。
+</Note>
+
+---
+
+# 並列開発の問題点
+
+<Row>
+  <Column align="center">
+    <GPTImage src="/gpt-git-branch.png" alt="gpt-git-branch"/>
+  </Column>
+</Row>
+
+<Note>Page 7</Note>
+
+---
+
+transition: none
+
+--
+
+# 並列開発の問題点
+
+<Row>
+  <Column align="left">
+    <Text>• 作業のコンフリクト</Text>
+  </Column>
+</Row>
+
+<Note>Page 8</Note>
+
+---
+
+transition: none
+
+--
+
+# 並列開発の問題点
+
+<Row>
+  <Column align="left">
+    <Text>• 作業のコンフリクト</Text>
+    <Text>• 他のメンバーのコードの動作確認</Text>
+  </Column>
+</Row>
+
+<Note>Page 9</Note>
+
+---
+
+transition: none
+
+--
+
+# 並列開発の問題点
+
+<Row>
+  <Column align="left">
+    <Text>• 作業のコンフリクト</Text>
+    <Text>• 他のメンバーのコードの動作確認</Text>
+    <Text>• ブランチ切り替え</Text>
+  </Column>
+</Row>
+
+<Note>Page 10</Note>
+
+---
+
+# git worktree
+
+<Row>
+  <Column align="center">
+    <GPTImage src="/gpt-git-worktree.png" alt="git worktree"/>
+  </Column>
+</Row>
+
+<Note>Page 11</Note>
+
+---
+
+# git worktree
+
+```bash
+git worktree add feature-branch
+```
+
+<Note>Page 12</Note>
+
+---
+
+transition: none
+
+--
+
+# git worktree
+
+<Row>
+  <Column align="left">
+    <Text>• ブランチを独立してチェックアウトできる機能</Text>
+  </Column>
+</Row>
+
+<Note>Page 13</Note>
+
+---
+
+
+transition: none
+
+--
+
+# git worktree
+
+<Row>
+  <Column align="left">
+    <Text>• ブランチを独立してチェックアウトできる機能</Text>
+    <Text>• 開発中のブランチに干渉せずに作業が可能</Text>
+  </Column>
+</Row>
+
+<Note>Page 14</Note>
+
+---
+
+transition: none
+
+--
+
+# git worktree
+
+<Row>
+  <Column align="left">
+    <Text>• ブランチを独立してチェックアウトできる機能</Text>
+    <Text>• 開発中のブランチに干渉せずに作業が可能</Text>
+    <Text>• 他のメンバーのPRの動作確認にも便利</Text>
+  </Column>
+</Row>
+
+<Note>Page 15</Note>
+
+---
+
+# 自分のworktreeの使い方
+
+<Note>Page 16</Note>
+
+---
+
+transition: none
+
+--
+
+# 自分のworktreeの使い方
+
+<Row>
+  <Column align="left">
+    <Text>• Feature branch ではなく、`dev-laplus` など、それぞれの worktree の default branch として作成している</Text>
+  </Column>
+</Row>
+
+<Note>Page 17</Note>
+
+---
+
+transition: none
+
+--
+
+# 自分のworktreeの使い方
+
+<Row>
+  <Column align="left">
+    <Text>• Feature branch ではなく、`dev-laplus` など、それぞれの worktree の default branch として作成している</Text>
+    <Text>• そこから新しく作業ブランチを切って、作業状況を確認できるようにしている</Text>
+  </Column>
+</Row>
+
+<Note>Page 18</Note>
+
+---
+
+transition: none
+
+--
+
+# 自分のworktreeの使い方
+
+<Row>
+  <Column align="left">
+    <Text>• Feature branch ではなく、`dev-laplus` など、それぞれの worktree の default branch として作成している</Text>
+    <Text>• そこから新しく作業ブランチを切って、作業状況を確認できるようにしている</Text>
+    <Text>• worktree の名前を好きなキャラクターにするとテンションが上がる</Text>
+  </Column>
+</Row>
+
+<Note>Page 19</Note>
+
+---
+
+# git worktree の問題点
+
+<Note>Page 20</Note>
+
+---
+
+transition: none
+
+--
+
+# git worktree の問題点
+
+<Row>
+  <Column align="left">
+    <Text>• git status に追加されてしまう</Text>
+    <Image width="60vw" height="50vh" objectFit="contain" src="./git-status.png"/>
+  </Column>
+</Row>
+
+<Note>Page 21</Note>
+
+---
+
+# git bare clone
+
+<Row>
+  <Column align="center">
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+      <GPTImage src="/gpt-git-bear.png" alt="git bare clone"/>
+      <p style={{ margin: 0, fontSize: 12, opacity: 0.4 }}>
+        *bear ではありません
+      </p>
+    </div>
+  </Column>
+</Row>
+
+<Note>Page 22</Note>
+
+---
+
+# git bare clone
+
+```bash
+git clone --bare <repository-url>
+```
+
+<Note>Page 22</Note>
+
+---
+
+# git bare clone
+
+<Row>
+  <Column align="left">
+    <Text>• `.git` の中身をrootとしてcloneしてくる</Text>
+  </Column>
+</Row>
+
+<Note>Page 24</Note>
+
+---
+
+transition: none
+
+--
+
+# git bare clone
+
+<Row>
+  <Column align="left">
+    <Text>• `.git` の中身をrootとしてcloneしてくる</Text>
+    <Text>• 複数のworktreeを作成してもdiffに表示されない</Text>
+  </Column>
+</Row>
+
+<Note>Page 25</Note>
+
+---
+
+transition: none
+
+--
+
+# git bare clone
+
+<Row>
+  <Column align="left">
+    <Text>• `.git` の中身をrootとしてcloneしてくる</Text>
+    <Text>• 複数のworktreeを作成してもdiffに表示されない</Text>
+    <Text>• git worktree を使って作業する前提のclone方法</Text>
+  </Column>
+</Row>
+
+<Note>Page 26</Note>
+
+---
+
+# 自分のClaude Codeの使い方
+
+<Note>Page 27</Note>
+
+---
+
+transition: none
+
+--
+
+# 自分のClaude Codeの使い方
+
+<Row>
+  <Column align="left">
+    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
+  </Column>
+</Row>
+
+<Note>Page 28</Note>
+
+---
+
+transition: none
+
+--
+
+# 自分のClaude Codeの使い方
+
+<Row>
+  <Column align="left">
+    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
+    <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
+  </Column>
+</Row>
+
+<Note>Page 29</Note>
+
+---
+
+transition: none
+
+--
+
+# 自分のClaude Codeの使い方
+
+<Row>
+  <Column align="left">
+    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
+    <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
+    <Text>• 自分の腕が増えたようなイメージ</Text>
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+
+---
+
+transition: none
+
+--
+
+# 自分のClaude Codeの使い方
+
+<Row>
+  <Column align="left">
+    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
+    <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
+    <Text>• 自分の腕が増えたようなイメージ</Text>
+    <Text>• やりたいけど着手する余裕がなかったタスクを裏で動かす</Text>
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+
+---
+
+transition: none
+
+--
+
+# 自分のClaude Codeの使い方
+
+<Row>
+  <Column align="left">
+    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
+    <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
+    <Text>• 自分の腕が増えたようなイメージ</Text>
+    <Text>• やりたいけど着手する余裕がなかったタスクを裏で動かす</Text>
+    <Text>• 日々のワークフローで行う動作をスクリプト化する</Text>
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+
+---
+
+# 作成したスクリプト
+
+<Note>Page 46</Note>
+
+---
+
+transition: none
+
+--
+
+# 作成したスクリプト
+
+<Row>
+  <Column align="left">
+    <Text>• worktree を切り替えるショートカット</Text>
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+
+---
+
+transition: none
+
+--
+
+# 作成したスクリプト
+
+<Row>
+  <Column align="left">
+    <Text>• worktree を切り替えるショートカット</Text>
+    <Text>• worktree の root branch に戻るスクリプト</Text>
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+
+---
+
+transition: none
+
+--
+
+# 作成したスクリプト
+
+<Row>
+  <Column align="left">
+    <Text>• worktree を切り替えるショートカット</Text>
+    <Text>• worktree の root branch に戻るスクリプト</Text>
+    <Text>• .env ファイルを各worktreeにコピーするスクリプト</Text>
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+
+---
+
+transition: none
+
+--
+
+# 作成したスクリプト
+
+<Row>
+  <Column align="left">
+    <Text>• worktree を切り替えるショートカット</Text>
+    <Text>• worktree の root branch に戻るスクリプト</Text>
+    <Text>• .env ファイルを各worktreeにコピーするスクリプト</Text>
+    <Text>• 各tmux paneに同じコマンドをするスクリプト</Text>
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+
+---
+
+# まとめ
+
+<Row>
+  <Column align="left">
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+
+---
+
+transition: none
+
+--
+
+# まとめ
+
+<Row>
+  <Column align="left">
+    <Text>• `git worktree` で独立した作業ブランチを同時並行で走らせる</Text>
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+
+---
+
+transition: none
+
+--
+
+# まとめ
+
+<Row>
+  <Column align="left">
+    <Text>• `git worktree` で独立した作業ブランチを同時並行で走らせる</Text>
+    <Text>• `git bare clone` で作業場所を気にせず実装を進められるようにする</Text>
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+
+---
+
+transition: none
+
+--
+
+# まとめ
+
+<Row>
+  <Column align="left">
+    <Text>• `git worktree` で独立した作業ブランチを同時並行で走らせる</Text>
+    <Text>• `git bare clone` で作業場所を気にせず実装を進められるようにする</Text>
+    <Text>• worktree 間の移動を快適にするツールをclaude codeに書かせる</Text>
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+
+---
+
+transition: none
+
+--
+
+# まとめ
+
+<Row>
+  <Column align="left">
+    <Text>• `git worktree` で独立した作業ブランチを同時並行で走らせる</Text>
+    <Text>• `git bare clone` で作業場所を気にせず実装を進められるようにする</Text>
+    <Text>• worktree 間の移動を快適にするツールをclaude codeに書かせる</Text>
+    <Text>• タスクはあくまで細かく切る</Text>
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+
+---
+
+# About me
+
+<Row>
+  <Column align="left">
+    <Heading>Naturalclar</Heading>
+    <Text>Developer at Anotherball</Text>
+    <Text>React Native Community</Text>
+    <Text>
+      X: <Link href="https://x.com/natural_clar">@natural_clar</Link>
+    </Text>
+    <Text>
+      GitHub: <Link href="https://github.com/Naturalclar">Naturalclar</Link>
+    </Text>
+  </Column>
+  <Column justify="center">
+    <MyIcon />
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+<Note>自己紹介スライド</Note>
+
+---
+
+
+# About me
+
+<Row>
+  <Column align="center">
+    <Image width="400" height="300" objectFit="contain" src="./avvy.png"/>
+    <Link href="https://avvy.live/">Avvy</Link>
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+<Note>Ad slide</Note>
+
+---
+
+# Thank You!
+
+<Note>Page 46</Note>
+
+---
+
+# Refs
+
+- [Git: Worktree](https://git-scm.com/docs/git-worktree)
+- [Git: Bare Clone](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---bare)
+- [YouTube: Git's Best and Most Unknown Feature](https://www.youtube.com/watch?v=2uEqYw-N8uE&pp=ygUGI2dpdDEw)
+- [lazygit](https://github.com/jesseduffield/lazygit)
+
+
+<Note>Page 46</Note>

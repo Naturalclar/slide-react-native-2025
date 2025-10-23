@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Claude Codeによる並列開発のすゝめ</title>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <!-- provide meta info for ogp -->
+    <meta property="og:title" content="Claude Codeによる並列開発のすゝめ" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://claude-code-meetup-lt.vercel.app/"
+    />
+    <meta
+      property="og:image"
+      content="https://claude-code-meetup-lt.vercel.app/card.png"
+    />
+    <meta property="og:description" content="Claude Codeによる並列開発のすゝめ" />
+    <meta property="og:site_name" content="Claude Codeによる並列開発のすゝめ" />
+    <meta property="og:locale" content="ja-JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@naturalclar" />
+    <meta name="twitter:creator" content="@naturalclar" />
+    <meta name="twitter:title" content="Claude Codeによる並列開発のすゝめ" />
+    <meta
+      name="twitter:description"
+      content="Claude Codeによる並列開発のすゝめ"
+    />
+    <meta
+      name="twitter:image"
+      content="https://claude-code-meetup-lt.vercel.app/card.png"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      import "@nkzw/remdx/style.css";
+      import "./styles.css";
+      import { render } from "@nkzw/remdx";
+
+      render(document.getElementById("app"), import("./slides.re.mdx"));
+    </script>
+  </body>
+</html>
