@@ -36,7 +36,7 @@ export { Themes } from "./Themes.tsx";
   </Column>
 </Row>
 
-<Note>Page 46</Note>
+<Note>Page 2</Note>
 <Note>Jesse です。以上です。</Note>
 
 ---
@@ -45,7 +45,7 @@ export { Themes } from "./Themes.tsx";
   <h1>今年が何の年か知ってますか？</h1>
 </Center>
 
-<Note>Page 2</Note>
+<Note>Page 3</Note>
 
 ---
 
@@ -53,9 +53,29 @@ export { Themes } from "./Themes.tsx";
   <h1>React Native 10周年 🎉</h1>
 </Center>
 
-<Note>Page 2</Note>
-<Note>この中で React Native を触ったことあるって人どれくらいいますか？
-</Note>
+<Note>Page 4</Note>
+<Note>この中で React Native を触ったことあるって人どれくらいいますか？</Note>
+
+---
+
+# 概要
+<Row>
+  <Column align="left">
+    <Text>React Native とは</Text>
+    <Text>以前と現状の比較</Text>
+    <Text>AI開発との相性は？</Text>
+  </Column>
+</Row>
+
+<Note>Page 5</Note>
+
+---
+<Center>
+  <h1>React Native とは？</h1>
+</Center>
+
+<Note>Page 4</Note>
+<Note>この中で React Native を触ったことあるって人どれくらいいますか？</Note>
 
 ---
 
@@ -63,17 +83,51 @@ export { Themes } from "./Themes.tsx";
 
 <Row>
   <Column align="left">
-    <Text>• Reactを使ってネイティブアプリを開発できる</Text>
-    <Text>• JSで iOS/Android 両方のアプリを作成</Text>
-    <Text>• WebView とは違い、直接 Native レイヤーを触りに行く</Text>
+    <Text>Reactを使ってネイティブアプリを開発できる</Text>
+    <Text>JSで iOS/Android 両方のアプリを作成</Text>
+    <Text>WebView とは違い、直接 Native レイヤーを触りに行く</Text>
+    <Text>開発元のMetaをはじめ、MS、Amazon、Shopify、Discord等大企業が導入</Text>
   </Column>
 </Row>
 
-<Note>Page 3</Note>
+<Note>Page 5</Note>
 
 ---
 
-# React Native とは
+<Center>
+  <h1>Q: WebViewでよくない？</h1>
+</Center>
+
+<Note>Page 4</Note>
+
+---
+
+# WebView
+<Row>
+  <Column align="left">
+    <Text>ReactなどのWebの資産をそのまま使う</Text>
+    <Text>OS準拠のブラウザに則って動く</Text>
+      <Text>iOS なら JSC, Android なら v8 など</Text>
+    <Text>ネイティブアプリ側との連携が挟まるため、スムーズなUXを提供しづらい</Text>
+  </Column>
+</Row>
+
+
+<Note>Page 5</Note>
+---
+# React Native
+<Row>
+  <Column align="left">
+    <Text>Reactの仕組みをネイティブに直接持ってくる</Text>
+    <Text>react-dom的な立ち位置</Text>
+    <Text>ネイティブ層を直接使うため、ネイティブと同じUXを提供できる</Text>
+  </Column>
+</Row>
+
+
+<Note>Page 5</Note>
+---
+# React Native
 
 <Center>
   <Row>
@@ -83,10 +137,9 @@ export { Themes } from "./Themes.tsx";
   </Row>
 </Center>
 
-<Note>Page 4</Note>
+<Note>Page 6</Note>
 
 ---
-
 
 # React Native とは
 
@@ -98,7 +151,7 @@ export { Themes } from "./Themes.tsx";
   </Row>
 </Center>
 
-<Note>Page 5</Note>
+<Note>Page 7</Note>
 
 ---
 
@@ -116,28 +169,76 @@ export { Themes } from "./Themes.tsx";
   </Column>
 </Row>
 
-<Note>Page 6</Note>
-
-<Note> 
-</Note>
+<Note>Page 8</Note>
 
 ---
 
-# まとめ
+<Center>
+  <h1>パフォーマンス悪い</h1>
+</Center>
+
+<Note>Page 4</Note>
+<Note></Note>
+
+---
+<Center>
+  <h1>New Architecture</h1>
+</Center>
+
+<Note>Page 4</Note>
+<Note></Note>
+
+---
+
+
+
+# New Architecture
 
 <Row>
   <Column align="left">
-    <Text>• `git worktree` で独立した作業ブランチを同時並行で走らせる</Text>
+    <Text>ネイティブ層との通信を同期的に行う仕組み</Text>
+    <Text>以前はJSON経由で全て非同期に行われていた</Text>
+    <Text>• 2022 年から段階的に導入</Text>
+    <Text>• 2024年でデフォルトで使われるように</Text>
+    <Text>• 今年リリースされた0.82からLegacy Architectureの撤廃</Text>
   </Column>
 </Row>
 
-<Note>Page 46</Note>
+<Note>Page 8</Note>
+
+---
+<Center>
+  <h1>起動時間が遅い</h1>
+</Center>
+
+<Note>Page 4</Note>
+<Note></Note>
+
+---
+<Center>
+  <h1>Hermes V1</h1>
+</Center>
+
+<Note>Page 4</Note>
+<Note></Note>
+
+---
+# Hermes V1
+
+<Row>
+  <Column align="left">
+    <Text>JSC等に代わるJSEngine</Text>
+    <Text>今年のReact Confでv1がexperimentalで使用可能</Text>
+    <Text>V1 は現状 static hermes 非対応</Text>
+    <Text>• 2024年でデフォルトで使われるように</Text>
+    <Text>• 今年リリースされた0.82からLegacy Architectureの撤廃</Text>
+  </Column>
+</Row>
+
+<Note>Page 8</Note>
 
 ---
 
-transition: none
-
---
 
 # まとめ
 
@@ -148,7 +249,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 46</Note>
+<Note>Page 10</Note>
 
 ---
 
@@ -166,7 +267,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 46</Note>
+<Note>Page 11</Note>
 
 ---
 
@@ -185,7 +286,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 46</Note>
+<Note>Page 12</Note>
 
 ---
 
@@ -208,7 +309,7 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 46</Note>
+<Note>Page 13</Note>
 <Note>自己紹介スライド</Note>
 
 ---
@@ -223,14 +324,14 @@ transition: none
   </Column>
 </Row>
 
-<Note>Page 46</Note>
+<Note>Page 14</Note>
 <Note>Ad slide</Note>
 
 ---
 
 # Thank You!
 
-<Note>Page 46</Note>
+<Note>Page 15</Note>
 
 ---
 
