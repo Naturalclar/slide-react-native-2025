@@ -15,7 +15,8 @@ export { Themes } from "./Themes.tsx";
 
 <Note>Page 1</Note>
 <Note>
-  React Native in 2025というタイトルで発表させていだだきます。Naturalclarです。よろしくおねがいします。
+  React Native in 2025というタイトルで発表させていだだきます。よろしくおねがいします。
+  まずは軽く自己紹介します
   メモ：
   祝React Native 10 周年
   今までとの違い
@@ -27,11 +28,34 @@ export { Themes } from "./Themes.tsx";
 
 ---
 
+# About me
+
+<Row>
+  <Column justify="center">
+    <MyIcon />
+  </Column>
+</Row>
+
+<Note>Page 46</Note>
+<Note>Jesse です。以上です。</Note>
+
+---
+
+<Center>
+  <h1>今年が何の年か知ってますか？</h1>
+</Center>
+
+<Note>Page 2</Note>
+
+---
+
 <Center>
   <h1>React Native 10周年 🎉</h1>
 </Center>
 
 <Note>Page 2</Note>
+<Note>この中で React Native を触ったことあるって人どれくらいいますか？
+</Note>
 
 ---
 
@@ -41,16 +65,13 @@ export { Themes } from "./Themes.tsx";
   <Column align="left">
     <Text>• Reactを使ってネイティブアプリを開発できる</Text>
     <Text>• JSで iOS/Android 両方のアプリを作成</Text>
+    <Text>• WebView とは違い、直接 Native レイヤーを触りに行く</Text>
   </Column>
 </Row>
 
 <Note>Page 3</Note>
 
 ---
-
-transition: none
-
---
 
 # React Native とは
 
@@ -65,10 +86,6 @@ transition: none
 <Note>Page 4</Note>
 
 ---
-
-transition: none
-
---
 
 
 # React Native とは
@@ -85,506 +102,26 @@ transition: none
 
 ---
 
-transition: none
-
---
 
 
-# セットアップ紹介
+# 昔のReact Native
 
 <Row>
-  <Column align="center">
-    <Image width="80vw" height="50vh" objectFit="contain" src="./editor.png"/>
+  <Column align="left">
+    <Text>• パフォーマンスが遅い</Text>
+    <Text>• 起動時間が遅い</Text>
+    <Text>• デバッグがしづらい</Text>
+    <Text>• アップデートに追従しづらい</Text>
+    <Text>• なんだかんだでネイティブの知識が必要</Text>
   </Column>
 </Row>
 
 <Note>Page 6</Note>
 
 <Note> 
-  2つ目のwindowは各worktreeのdiffを見たり、手作業でコードする場所として使っています。
-  3つ目のwindowは各worktreeのサーバー、クライアントを立ち上げて動作確認する場所として使っています。
-  その他、各worktreeのテスト結果を確認するために都度windowを開いています。
 </Note>
 
 ---
-
-# 並列開発の問題点
-
-<Row>
-  <Column align="center">
-    <GPTImage src="/gpt-git-branch.png" alt="gpt-git-branch"/>
-  </Column>
-</Row>
-
-<Note>Page 7</Note>
-
----
-
-transition: none
-
---
-
-# 並列開発の問題点
-
-<Row>
-  <Column align="left">
-    <Text>• 作業のコンフリクト</Text>
-  </Column>
-</Row>
-
-<Note>Page 8</Note>
-
----
-
-transition: none
-
---
-
-# 並列開発の問題点
-
-<Row>
-  <Column align="left">
-    <Text>• 作業のコンフリクト</Text>
-    <Text>• 他のメンバーのコードの動作確認</Text>
-  </Column>
-</Row>
-
-<Note>Page 9</Note>
-
----
-
-transition: none
-
---
-
-# 並列開発の問題点
-
-<Row>
-  <Column align="left">
-    <Text>• 作業のコンフリクト</Text>
-    <Text>• 他のメンバーのコードの動作確認</Text>
-    <Text>• ブランチ切り替え</Text>
-  </Column>
-</Row>
-
-<Note>Page 10</Note>
-
----
-
-# git worktree
-
-<Row>
-  <Column align="center">
-    <GPTImage src="/gpt-git-worktree.png" alt="git worktree"/>
-  </Column>
-</Row>
-
-<Note>Page 11</Note>
-
----
-
-# git worktree
-
-```bash
-git worktree add feature-branch
-```
-
-<Note>Page 12</Note>
-
----
-
-transition: none
-
---
-
-# git worktree
-
-<Row>
-  <Column align="left">
-    <Text>• ブランチを独立してチェックアウトできる機能</Text>
-  </Column>
-</Row>
-
-<Note>Page 13</Note>
-
----
-
-
-transition: none
-
---
-
-# git worktree
-
-<Row>
-  <Column align="left">
-    <Text>• ブランチを独立してチェックアウトできる機能</Text>
-    <Text>• 開発中のブランチに干渉せずに作業が可能</Text>
-  </Column>
-</Row>
-
-<Note>Page 14</Note>
-
----
-
-transition: none
-
---
-
-# git worktree
-
-<Row>
-  <Column align="left">
-    <Text>• ブランチを独立してチェックアウトできる機能</Text>
-    <Text>• 開発中のブランチに干渉せずに作業が可能</Text>
-    <Text>• 他のメンバーのPRの動作確認にも便利</Text>
-  </Column>
-</Row>
-
-<Note>Page 15</Note>
-
----
-
-# 自分のworktreeの使い方
-
-<Note>Page 16</Note>
-
----
-
-transition: none
-
---
-
-# 自分のworktreeの使い方
-
-<Row>
-  <Column align="left">
-    <Text>• Feature branch ではなく、`dev-laplus` など、それぞれの worktree の default branch として作成している</Text>
-  </Column>
-</Row>
-
-<Note>Page 17</Note>
-
----
-
-transition: none
-
---
-
-# 自分のworktreeの使い方
-
-<Row>
-  <Column align="left">
-    <Text>• Feature branch ではなく、`dev-laplus` など、それぞれの worktree の default branch として作成している</Text>
-    <Text>• そこから新しく作業ブランチを切って、作業状況を確認できるようにしている</Text>
-  </Column>
-</Row>
-
-<Note>Page 18</Note>
-
----
-
-transition: none
-
---
-
-# 自分のworktreeの使い方
-
-<Row>
-  <Column align="left">
-    <Text>• Feature branch ではなく、`dev-laplus` など、それぞれの worktree の default branch として作成している</Text>
-    <Text>• そこから新しく作業ブランチを切って、作業状況を確認できるようにしている</Text>
-    <Text>• worktree の名前を好きなキャラクターにするとテンションが上がる</Text>
-  </Column>
-</Row>
-
-<Note>Page 19</Note>
-
----
-
-# git worktree の問題点
-
-<Note>Page 20</Note>
-
----
-
-transition: none
-
---
-
-# git worktree の問題点
-
-<Row>
-  <Column align="left">
-    <Text>• git status に追加されてしまう</Text>
-    <Image width="60vw" height="50vh" objectFit="contain" src="./git-status.png"/>
-  </Column>
-</Row>
-
-<Note>Page 21</Note>
-
----
-
-# git bare clone
-
-<Row>
-  <Column align="center">
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-      <GPTImage src="/gpt-git-bear.png" alt="git bare clone"/>
-      <p style={{ margin: 0, fontSize: 12, opacity: 0.4 }}>
-        *bear ではありません
-      </p>
-    </div>
-  </Column>
-</Row>
-
-<Note>Page 22</Note>
-
----
-
-# git bare clone
-
-```bash
-git clone --bare <repository-url>
-```
-
-<Note>Page 22</Note>
-
----
-
-# git bare clone
-
-<Row>
-  <Column align="left">
-    <Text>• `.git` の中身をrootとしてcloneしてくる</Text>
-  </Column>
-</Row>
-
-<Note>Page 24</Note>
-
----
-
-transition: none
-
---
-
-# git bare clone
-
-<Row>
-  <Column align="left">
-    <Text>• `.git` の中身をrootとしてcloneしてくる</Text>
-    <Text>• 複数のworktreeを作成してもdiffに表示されない</Text>
-  </Column>
-</Row>
-
-<Note>Page 25</Note>
-
----
-
-transition: none
-
---
-
-# git bare clone
-
-<Row>
-  <Column align="left">
-    <Text>• `.git` の中身をrootとしてcloneしてくる</Text>
-    <Text>• 複数のworktreeを作成してもdiffに表示されない</Text>
-    <Text>• git worktree を使って作業する前提のclone方法</Text>
-  </Column>
-</Row>
-
-<Note>Page 26</Note>
-
----
-
-# 自分のClaude Codeの使い方
-
-<Note>Page 27</Note>
-
----
-
-transition: none
-
---
-
-# 自分のClaude Codeの使い方
-
-<Row>
-  <Column align="left">
-    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
-  </Column>
-</Row>
-
-<Note>Page 28</Note>
-
----
-
-transition: none
-
---
-
-# 自分のClaude Codeの使い方
-
-<Row>
-  <Column align="left">
-    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
-    <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
-  </Column>
-</Row>
-
-<Note>Page 29</Note>
-
----
-
-transition: none
-
---
-
-# 自分のClaude Codeの使い方
-
-<Row>
-  <Column align="left">
-    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
-    <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
-    <Text>• 自分の腕が増えたようなイメージ</Text>
-  </Column>
-</Row>
-
-<Note>Page 46</Note>
-
----
-
-transition: none
-
---
-
-# 自分のClaude Codeの使い方
-
-<Row>
-  <Column align="left">
-    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
-    <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
-    <Text>• 自分の腕が増えたようなイメージ</Text>
-    <Text>• やりたいけど着手する余裕がなかったタスクを裏で動かす</Text>
-  </Column>
-</Row>
-
-<Note>Page 46</Note>
-
----
-
-transition: none
-
---
-
-# 自分のClaude Codeの使い方
-
-<Row>
-  <Column align="left">
-    <Text>• 複数のworktreeで分割したタスクを実行している</Text>
-    <Text>• タスクのスコープはかなり細かく切り、少ない指示で成功させることを意識する</Text>
-    <Text>• 自分の腕が増えたようなイメージ</Text>
-    <Text>• やりたいけど着手する余裕がなかったタスクを裏で動かす</Text>
-    <Text>• 日々のワークフローで行う動作をスクリプト化する</Text>
-  </Column>
-</Row>
-
-<Note>Page 46</Note>
-
----
-
-# 作成したスクリプト
-
-<Note>Page 46</Note>
-
----
-
-transition: none
-
---
-
-# 作成したスクリプト
-
-<Row>
-  <Column align="left">
-    <Text>• worktree を切り替えるショートカット</Text>
-  </Column>
-</Row>
-
-<Note>Page 46</Note>
-
----
-
-transition: none
-
---
-
-# 作成したスクリプト
-
-<Row>
-  <Column align="left">
-    <Text>• worktree を切り替えるショートカット</Text>
-    <Text>• worktree の root branch に戻るスクリプト</Text>
-  </Column>
-</Row>
-
-<Note>Page 46</Note>
-
----
-
-transition: none
-
---
-
-# 作成したスクリプト
-
-<Row>
-  <Column align="left">
-    <Text>• worktree を切り替えるショートカット</Text>
-    <Text>• worktree の root branch に戻るスクリプト</Text>
-    <Text>• .env ファイルを各worktreeにコピーするスクリプト</Text>
-  </Column>
-</Row>
-
-<Note>Page 46</Note>
-
----
-
-transition: none
-
---
-
-# 作成したスクリプト
-
-<Row>
-  <Column align="left">
-    <Text>• worktree を切り替えるショートカット</Text>
-    <Text>• worktree の root branch に戻るスクリプト</Text>
-    <Text>• .env ファイルを各worktreeにコピーするスクリプト</Text>
-    <Text>• 各tmux paneに同じコマンドをするスクリプト</Text>
-  </Column>
-</Row>
-
-<Note>Page 46</Note>
-
----
-
-# まとめ
-
-<Row>
-  <Column align="left">
-  </Column>
-</Row>
-
-<Note>Page 46</Note>
-
----
-
-transition: none
-
---
 
 # まとめ
 
