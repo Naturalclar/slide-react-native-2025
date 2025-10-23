@@ -22,8 +22,6 @@ export { Themes } from "./Themes.tsx";
   今までとの違い
   Expo の進化
   AI開発との相性
-
-
 </Note>
 
 ---
@@ -55,6 +53,15 @@ export { Themes } from "./Themes.tsx";
 
 <Note>Page 4</Note>
 <Note>この中で React Native を触ったことあるって人どれくらいいますか？</Note>
+
+---
+
+<Center>
+  <Image src="/10years.png" width={800}/>
+</Center>
+
+<Note>Page 4</Note>
+
 
 ---
 
@@ -155,17 +162,24 @@ export { Themes } from "./Themes.tsx";
 
 ---
 
+<Center>
+  <h1>以前と現状の比較</h1>
+</Center>
+
+<Note>Page 4</Note>
+
+---
 
 
 # 昔のReact Native
 
 <Row>
   <Column align="left">
-    <Text>• パフォーマンスが遅い</Text>
-    <Text>• 起動時間が遅い</Text>
-    <Text>• デバッグがしづらい</Text>
-    <Text>• アップデートに追従しづらい</Text>
-    <Text>• なんだかんだでネイティブの知識が必要</Text>
+    <Text>パフォーマンスが遅い</Text>
+    <Text>起動時間が遅い</Text>
+    <Text>デバッグがしづらい</Text>
+    <Text>アップデートに追従しづらい</Text>
+    <Text>なんだかんだでネイティブの知識が必要</Text>
   </Column>
 </Row>
 
@@ -198,9 +212,9 @@ export { Themes } from "./Themes.tsx";
   <Column align="left">
     <Text>ネイティブ層との通信を同期的に行う仕組み</Text>
     <Text>以前はJSON経由で全て非同期に行われていた</Text>
-    <Text>• 2022 年から段階的に導入</Text>
-    <Text>• 2024年でデフォルトで使われるように</Text>
-    <Text>• 今年リリースされた0.82からLegacy Architectureの撤廃</Text>
+    <Text>2022 年から段階的に導入</Text>
+    <Text>2024年でデフォルトで使われるように</Text>
+    <Text>今年リリースされた0.82からLegacy Architectureの撤廃</Text>
   </Column>
 </Row>
 
@@ -228,10 +242,75 @@ export { Themes } from "./Themes.tsx";
 <Row>
   <Column align="left">
     <Text>JSC等に代わるJSEngine</Text>
-    <Text>今年のReact Confでv1がexperimentalで使用可能</Text>
+    <Text>今年のReact Confでv1が発表された</Text>
+    <Text>現状experimentalで使用可能</Text>
+    <Text>es6のsyntaxがそのまま実行される</Text>
+      <Text>以前のhermesではbabelでtranspileが必要だった</Text>
     <Text>V1 は現状 static hermes 非対応</Text>
-    <Text>• 2024年でデフォルトで使われるように</Text>
-    <Text>• 今年リリースされた0.82からLegacy Architectureの撤廃</Text>
+      <Text>今後対応予定</Text>
+      <Text>binary への compile等はその時にまた可能になる</Text>
+    <Text>全体的には以前のhermesよりも速度が上がっている</Text>
+  </Column>
+</Row>
+
+<Note>Page 8</Note>
+
+---
+<Center>
+  <h1>デバッグがしづらい</h1>
+</Center>
+
+<Note>Page 4</Note>
+<Note></Note>
+
+---
+<Center>
+  <h1>React Native dev tools</h1>
+</Center>
+
+<Note>Page 4</Note>
+<Note></Note>
+
+---
+
+# React Native dev tools
+
+<Row>
+  <Column align="left">
+    <Text>React Nativeに特化したdebugger</Text>
+    <Text>Chrome Inspector と同じような使用感で使える</Text>
+    <Text>以前はFlipperというmeta製のネイティブアプリ用のデバッガーにRNが対応していた</Text>
+  </Column>
+</Row>
+
+<Note>Page 8</Note>
+
+---
+<Center>
+  <h1>ネイティブの知識が結局必要<h1>
+</Center>
+
+<Note>Page 4</Note>
+<Note></Note>
+
+---
+<Center>
+  <h1>Expo</h1>
+</Center>
+
+<Note>Page 4</Note>
+<Note></Note>
+
+---
+# Expo
+
+<Row>
+  <Column align="left">
+    <Text>React NativeにおけるNext.js的な立ち位置</Text>
+    <Text>ネイティブ層のビルドに必要なことを一通り担ってくれる</Text>
+    <Text>以前は、Bluetoothなどexpoだと使えないネイティブの機能があった</Text>
+    <Text>現在ではどんなサードパーティライブラリでも(基本的に)使用可能</Text>
+      <Text>一部プラグインを自作する必要はある</Text>
   </Column>
 </Row>
 
@@ -239,13 +318,47 @@ export { Themes } from "./Themes.tsx";
 
 ---
 
+# 比較まとめ
 
+<Row>
+  <Column align="left">
+    <Text>Expo router によってNext.jsのようなfile based routingに対応</Text>
+    <Text>Tailwind等もWeb開発と似たような感覚で使える</Text>
+    <Text>全体的に以前よりも格段に快適になった</Text>
+    <Text>古いバージョンを使っている場合は最新バージョンへのアップデートは若干大変かも</Text>
+  </Column>
+</Row>
+
+<Note>Page 8</Note>
+
+---
+
+<Center>
+  <h1>AI開発との相性</h1>
+</Center>
+
+<Note>Page 3</Note>
+
+---
+# AI開発との相性
+
+<Row>
+  <Column align="left">
+    <Text>WebのReactと同じ書き方なので、基本的に相性は良い</Text>
+    <Text>古いライブラリやバージョンとかを結構使われたりするので、initとかは公式が提供しているコマンドから始めるのが無難</Text>
+    <Text>ライブラリのアップデートとかには不向きなのでこの辺は地道な作業が必要</Text>
+  </Column>
+</Row>
+
+<Note>Page 8</Note>
+
+---
 # まとめ
 
 <Row>
   <Column align="left">
-    <Text>• `git worktree` で独立した作業ブランチを同時並行で走らせる</Text>
-    <Text>• `git bare clone` で作業場所を気にせず実装を進められるようにする</Text>
+    <Text></Text>
+    <Text></Text>
   </Column>
 </Row>
 
@@ -253,42 +366,6 @@ export { Themes } from "./Themes.tsx";
 
 ---
 
-transition: none
-
---
-
-# まとめ
-
-<Row>
-  <Column align="left">
-    <Text>• `git worktree` で独立した作業ブランチを同時並行で走らせる</Text>
-    <Text>• `git bare clone` で作業場所を気にせず実装を進められるようにする</Text>
-    <Text>• worktree 間の移動を快適にするツールをclaude codeに書かせる</Text>
-  </Column>
-</Row>
-
-<Note>Page 11</Note>
-
----
-
-transition: none
-
---
-
-# まとめ
-
-<Row>
-  <Column align="left">
-    <Text>• `git worktree` で独立した作業ブランチを同時並行で走らせる</Text>
-    <Text>• `git bare clone` で作業場所を気にせず実装を進められるようにする</Text>
-    <Text>• worktree 間の移動を快適にするツールをclaude codeに書かせる</Text>
-    <Text>• タスクはあくまで細かく切る</Text>
-  </Column>
-</Row>
-
-<Note>Page 12</Note>
-
----
 
 # About me
 
